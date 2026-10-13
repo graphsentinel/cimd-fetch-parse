@@ -88,12 +88,18 @@ admin_secret(){ # a random bootstrap admin password per checkout (0600, never pr
   [ -s "$RT/admin-password" ] && [ -s "$RT/admin.env" ] && return
   ( umask 077; openssl rand -hex 24 | tr -d '\n' > "$RT/admin-password"
     printf 'KC_BOOTSTRAP_ADMIN_USERNAME=%s\nKC_BOOTSTRAP_ADMIN_PASSWORD=%s\n' "$ADMIN_USER" "$(cat "$RT/admin-password")" > "$RT/admin.env" ); }
-owned(){ # owned <version>: every listener of that version is held by this checkout's own container or process
-  local p k i=0; for p in $(ports "$1"); do k=$(echo stock ext noflag | cut -d' ' -f$((i+1))); i=$((i+1))
-    { listening 127.0.0.1 "$p" && kc_holds "cimdlab-$k-$1" "$p" && ! ss -ltnH "( sport = :$p )" | awk '{print $4}' | grep -vxF -e "127.0.0.2:$p" -e "127.0.0.1:$p" -e "[::ffff:127.0.0.1]:$p" | grep -q .; } || { echo "127.0.0.1:$p is not this lab's cimdlab-$k-$1" >&2; return 1; }
+owned_once(){ # owned_once <version>: every listener of that version is held by this checkout's own container or process
+  local p k c i=0; for p in $(ports "$1"); do k=$(echo stock ext noflag | cut -d' ' -f$((i+1))); i=$((i+1)); c=cimdlab-$k-$1
+    listening 127.0.0.1 "$p" || { echo "127.0.0.1:$p: nothing listening" >&2; return 1; }
+    kc_holds "$c" "$p" || { echo "127.0.0.1:$p: $c is not this checkout's running container for that port" >&2; return 1; }
+    ! ss -ltnH "( sport = :$p )" | awk '{print $4}' | grep -vxF -e "127.0.0.2:$p" -e "127.0.0.1:$p" -e "[::ffff:127.0.0.1]:$p" | grep -q . \
+      || { echo "port $p: another listener besides the lab's" >&2; return 1; }
     holds "$RT/proxy-$p.pid" recording-proxy.py 127.0.0.2 "$p" || { echo "127.0.0.2:$p is not this lab's proxy" >&2; return 1; }
   done
   holds "$RT/metadata.pid" metadata-server.py 0.0.0.0 8443 || { echo "8443 is not this lab's metadata server" >&2; return 1; }; }
+owned(){ # owned <version>: a negative answer is re-verified twice (3 s apart) — a probe (podman inspect, ss) can fail
+  # for a moment under load; a lab that is really not ours stays not ours. Re-verifying sends nothing to the lab.
+  local t; for t in 1 2 3; do owned_once "$1" && return 0; [ $t = 3 ] || sleep 3; done; return 1; }
 
 preflight(){ # every port this lab needs must be free or held by this lab's own process: never take over another service
   need_ss
