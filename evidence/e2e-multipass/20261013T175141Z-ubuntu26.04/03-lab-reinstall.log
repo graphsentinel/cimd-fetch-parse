@@ -1,0 +1,16 @@
+lab removed (containers labelled cimdlab=1, proxies, metadata server)
+tls: existing certificate for 10-239-182-107.nip.io
+metadata  https://10-239-182-107.nip.io:8443  ready
+cimdlab-stock-26.7.0  127.0.0.2:18100  ready
+cimdlab-ext-26.7.0  127.0.0.2:18101  ready
+cimdlab-noflag-26.7.0  127.0.0.2:18102  ready
+cimdlab-stock-26.8.0  127.0.0.2:18110  ready
+cimdlab-ext-26.8.0  127.0.0.2:18111  ready
+cimdlab-noflag-26.8.0  127.0.0.2:18112  ready
+metadata  https://10-239-182-107.nip.io:8443  ready
+cimdlab-stock-26.7.0  127.0.0.2:18100  ready
+cimdlab-ext-26.7.0  127.0.0.2:18101  ready
+cimdlab-noflag-26.7.0  127.0.0.2:18102  ready
+cimdlab-stock-26.8.0  127.0.0.2:18110  ready
+cimdlab-ext-26.8.0  127.0.0.2:18111  ready
+cimdlab-noflag-26.8.0  127.0.0.2:18112  ready

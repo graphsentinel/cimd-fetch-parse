@@ -1,0 +1,27 @@
+
+==> launch cimd-e2e-2604: Ubuntu 26.04, 6 CPU, 12G, 30G
+
+==> copy source: committed tree a904d4e02a166ad5730a80183927f196f0ab1615
+
+==> scripts/platform.sh install
+01-platform-install: exit 0, 98 s
+
+==> RUNS=5 scripts/lab.sh all
+02-lab-all: exit 0, 4621 s
+raw evidence: raw-evidence-main.tar.gz
+
+==> scripts/lab.sh reinstall && scripts/lab.sh status
+03-lab-reinstall: exit 0, 273 s
+
+==> RUNS=1 scripts/lab.sh test
+04-lab-test-after-reinstall: exit 0, 530 s
+raw evidence: raw-evidence-after-reinstall.tar.gz
+
+==> scripts/lab.sh uninstall
+05-lab-uninstall: exit 0, 5 s
+
+==> scripts/platform.sh status
+06-platform-after-uninstall: exit 0, 0 s
+
+==> fetch results
+result: exit 0

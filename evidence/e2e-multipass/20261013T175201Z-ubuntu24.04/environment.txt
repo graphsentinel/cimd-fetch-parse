@@ -1,0 +1,7 @@
+Ubuntu 24.04.5 LTS
+6.8.0-142-generic
+6
+               total        used        free      shared  buff/cache   available
+Mem:            11Gi       507Mi       9.0Gi       5.1Mi       2.5Gi        11Gi
+podman version 4.9.3
+Python 3.12.3

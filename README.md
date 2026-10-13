@@ -42,7 +42,9 @@ separately, every valid run):
 - **The executor also checks a redirect host the request does not use** (check 09): goose lists an IPv4 and an IPv6
   loopback redirect; with IPv4 hosts only it is refused naming `[::1]`; `::1` does not help, `[::1]` does.
 
-Results of the reference run: [evidence/](evidence/) (raw requests and responses, server logs, the summary).
+Reference runs ([evidence/](evidence/), raw requests and responses, server logs, summaries): clean Ubuntu 26.04 VM,
+5 rounds on both versions, 100/100 checks PASS; clean Ubuntu 24.04 VM, 20/20; each followed by a reinstall round (20/20)
+and an uninstall. Keycloak 26.8.1, measured separately (3 rounds, 30/30), gives the same results.
 
 ## Not claimed
 
@@ -131,7 +133,7 @@ the check saw it), `metadata-requests.jsonl`, `stdout.txt`, `manifest.json`
 
 | Component | Version |
 |---|---|
-| Keycloak | 26.7.0 and 26.8.0 (measured), pinned by digest in `scripts/versions.env`; `scripts/check-versions.sh` reports newer releases |
+| Keycloak | 26.7.0 and 26.8.0 (measured, default), 26.8.1 (measured separately: `VERSIONS=26.8.1`); pinned by digest in `scripts/versions.env`; `scripts/check-versions.sh` reports newer releases |
 | Extension | built against the Keycloak version it runs on (`-Dkeycloak.version`) |
 | Build image | `maven:3.9-eclipse-temurin-17` (digest in `versions.env`) |
 

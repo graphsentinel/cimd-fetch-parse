@@ -1,0 +1,80 @@
+Trying to pull docker.io/library/maven@sha256:1a352420f7aba21f5ad08df31bab55f74c013fb491f1ae8ab1dd7ff9ed698584...
+Getting image source signatures
+Copying blob sha256:0d6621ed68d388094866adb9ba01b741a60d2bb48ebf618655da32db30bc613f
+Copying blob sha256:6ed9971a62fa977a56b299303af6d9bd1a25e1c68c7eec80c15b38deb612c755
+Copying blob sha256:edd1ed89f0d443580bd42e5a10cd8736aba5a3438b2a0645c2ebb50119bb0eba
+Copying blob sha256:528b48a07f784fe320d419ad522c6ea0b720de09023f17b205ceb39b82259996
+Copying blob sha256:dd1380fd83f09a4e55ae12e3e7ad45b77ab8bd2670e34e271f271a3533200b34
+Copying blob sha256:0187a0cde513bac1578240fe660c2923c2c5eab87249c03ac120b45580519ee9
+Copying blob sha256:b2a6841fdc6cbd085097deb1d9c720069dbacee84cf1687213de59da32ae5805
+Copying blob sha256:67f774a47cb5f1b0e174ed3c41b21e8cb9df75ccf312e886bb784ab409447775
+Copying blob sha256:021db8d0ef42ba2ac0d1304afe6b7ebcc7a91b31c61d21c849976c83a4af3935
+Copying blob sha256:4fe30289cca7ad88561d2fd5028f587b6089f314c9ef89c81166202dbd18ed26
+Copying config sha256:caa1c99435b94bae143279df3c73652ef32fb1bae6a4f21ea544da05c85c16ee
+Writing manifest to image destination
+built /home/ubuntu/lab/lab/.runtime/spi-26.7.0/cimd-fetch-parse-spi.jar (d4ecc8715d64)
+built /home/ubuntu/lab/lab/.runtime/spi-26.8.0/cimd-fetch-parse-spi.jar (f467caa2f973)
+tls: generated for 10-239-182-151.nip.io
+Trying to pull quay.io/keycloak/keycloak@sha256:0f198be292568439d700cdbfb893e69a6009bb43a94a06a945b1d3d506c76b13...
+Getting image source signatures
+Copying blob sha256:d4b67fccc581956d40b49ab19e5a1e46066d3fa2899f96b1fdf79b1c05345a59
+Copying blob sha256:8c31fc56d1414f049b912eef9fdb6eaa059d88bce4949f9de52ce5897cf6368e
+Copying blob sha256:1cc74dcfccfb9af228e0197fece9d4b5e9f7d6942048d5cbf399a804fc3c25f6
+Copying blob sha256:bab2dd3bff66582b466c88b32c46791af5f83396ec46df8aea095aa6229e5265
+Copying config sha256:60e153026e8f53ee2c3877b23aa664a6fb24ea99c57085b40cbb77ca2be01e3d
+Writing manifest to image destination
+Trying to pull quay.io/keycloak/keycloak@sha256:27b3230fbabb8c9ff3c66c864cf09dcd8a41aca82e5100679d109ef0eeb05741...
+Getting image source signatures
+Copying blob sha256:419e1af5d56df595fa7d2263ca430bf14de96ef0f6cabab7b2d9a145851a4567
+Copying blob sha256:227bdb4b45058da1675bf0a24f32008ae252fdc129e4d3e77da0f8374ea658a8
+Copying blob sha256:5ce76b83d5597afc5e29aaa930090a7eb9ca8bd57a52c93beed6e595d0621d51
+Copying blob sha256:da25e481a8b06aed5eaf78089f3d0a52b2386fa45fc64bb506d0afce1d42e6cc
+Copying config sha256:e2508edb35d7b3b39468c3e4e77da4e3c8dca8968b055259d60ccfbd29d65e59
+Writing manifest to image destination
+metadata  https://10-239-182-151.nip.io:8443  ready
+cimdlab-stock-26.7.0  127.0.0.2:18100  ready
+cimdlab-ext-26.7.0  127.0.0.2:18101  ready
+cimdlab-noflag-26.7.0  127.0.0.2:18102  ready
+cimdlab-stock-26.8.0  127.0.0.2:18110  ready
+cimdlab-ext-26.8.0  127.0.0.2:18111  ready
+cimdlab-noflag-26.8.0  127.0.0.2:18112  ready
+plan: 20 runs (versions: 26.7.0 26.8.0 · checks: 01 02 03 04 05 06 07 08 09 10 · RUNS=1), session 20261013T181045Z
+20261013T181045Z-v26.7.0-c01-r1-a1               exit 0  PASS: 5 of 8 refused by stock Keycloak 26.7.0 at parse time, 3 accepted.
+20261013T181045Z-v26.7.0-c02-r1-a1               exit 0  PASS: present -> refused (parse), removed -> accepted, added -> refused (parse), untouched
+20261013T181045Z-v26.7.0-c03-r1-a1               exit 0  PASS: on a parse refusal determineFetchOperation ran (1), createClientMetadata never did.
+20261013T181045Z-v26.7.0-c04-r1-a1               exit 0  PASS: the unknown property is accepted; malformed JSON, missing client_id, mismatched clie
+20261013T181045Z-v26.7.0-c05-r1-a1               exit 0  PASS: no parse refusal left (7 accepted, 1 refused for an allowlist host).
+20261013T181045Z-v26.7.0-c06-r1-a1               exit 0  PASS: both doors closed in a default realm — CIMD refused at parse time, anonymous regis
+20261013T181045Z-v26.7.0-c07-r1-a1               exit 0  PASS: every realm advertises CIMD; with DCR open, both realms refuse the document — 'Cli
+20261013T181045Z-v26.7.0-c08-r1-a1               exit 0  PASS: CIMD only: stock 3/8, lenient-cimd 7/8.
+20261013T181045Z-v26.7.0-c09-r1-a1               exit 0  PASS: IPv4-only 400 (DOMAIN:[::1]), '::1' 400 (DOMAIN:[::1]), '[::1]' 200 — the executor
+20261013T181045Z-v26.7.0-c10-r1-a1               exit 0  PASS: all eight accepted and persisted in one run, with anonymous registration refused (40
+20261013T181045Z-v26.8.0-c01-r1-a1               exit 0  PASS: 5 of 8 refused by stock Keycloak 26.8.0 at parse time, 3 accepted.
+20261013T181045Z-v26.8.0-c02-r1-a1               exit 0  PASS: present -> refused (parse), removed -> accepted, added -> refused (parse), untouched
+20261013T181045Z-v26.8.0-c03-r1-a1               exit 0  PASS: on a parse refusal determineFetchOperation ran (1), createClientMetadata never did.
+20261013T181045Z-v26.8.0-c04-r1-a1               exit 0  PASS: the unknown property is accepted; malformed JSON, missing client_id, mismatched clie
+20261013T181045Z-v26.8.0-c05-r1-a1               exit 0  PASS: no parse refusal left (7 accepted, 1 refused for an allowlist host).
+20261013T181045Z-v26.8.0-c06-r1-a1               exit 0  PASS: both doors closed in a default realm — CIMD refused at parse time, anonymous regis
+20261013T181045Z-v26.8.0-c07-r1-a1               exit 0  PASS: every realm advertises CIMD; with DCR open, both realms refuse the document — 'Cli
+20261013T181045Z-v26.8.0-c08-r1-a1               exit 0  PASS: CIMD only: stock 3/8, lenient-cimd 7/8.
+20261013T181045Z-v26.8.0-c09-r1-a1               exit 0  PASS: IPv4-only 400 (DOMAIN:[::1]), '::1' 400 (DOMAIN:[::1]), '[::1]' 200 — the executor
+20261013T181045Z-v26.8.0-c10-r1-a1               exit 0  PASS: all eight accepted and persisted in one run, with anonymous registration refused (40
+# Lab summary — session 20261013T181045Z
+
+| check | Keycloak 26.7.0 | Keycloak 26.8.0 |
+|---|---|---|
+| 01 stock-compatibility | 1/1 PASS | 1/1 PASS |
+| 02 causality | 1/1 PASS | 1/1 PASS |
+| 03 provider-hook | 1/1 PASS | 1/1 PASS |
+| 04 negative-controls | 1/1 PASS | 1/1 PASS |
+| 05 extension-real-documents | 1/1 PASS | 1/1 PASS |
+| 06 two-doors | 1/1 PASS | 1/1 PASS |
+| 07 advertisement | 1/1 PASS | 1/1 PASS |
+| 08 cimd-only-posture | 1/1 PASS | 1/1 PASS |
+| 09 ipv6-allowlist | 1/1 PASS | 1/1 PASS |
+| 10 eight-in-one-run | 1/1 PASS | 1/1 PASS |
+
+Attempts that ended NOT RUN [vendor-fetch] and were tried again: 0
+
+Problems: 0
+

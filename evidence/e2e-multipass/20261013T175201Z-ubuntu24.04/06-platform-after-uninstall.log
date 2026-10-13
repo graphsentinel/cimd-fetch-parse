@@ -1,0 +1,7 @@
+jq: /usr/bin/jq
+curl: /usr/bin/curl
+python3: /usr/bin/python3
+openssl: /usr/bin/openssl
+ss: /usr/bin/ss
+container engine: podman podman version 4.9.3
+podman: runs containers

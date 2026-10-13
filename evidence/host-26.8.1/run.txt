@@ -1,0 +1,4 @@
+host: Ubuntu 26.04.1 LTS
+keycloak: 26.8.1 (sha256:79c623a22aba…)
+commit: c46e9a9
+session: 20261013T172326Z RUNS=3 PORT_BASE=18300

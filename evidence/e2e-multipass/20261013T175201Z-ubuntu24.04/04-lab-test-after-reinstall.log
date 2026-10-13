@@ -1,0 +1,42 @@
+plan: 20 runs (versions: 26.7.0 26.8.0 · checks: 01 02 03 04 05 06 07 08 09 10 · RUNS=1), session 20261013T182312Z
+20261013T182312Z-v26.7.0-c01-r1-a1               exit 0  PASS: 5 of 8 refused by stock Keycloak 26.7.0 at parse time, 3 accepted.
+20261013T182312Z-v26.7.0-c02-r1-a1               exit 0  PASS: present -> refused (parse), removed -> accepted, added -> refused (parse), untouched
+20261013T182312Z-v26.7.0-c03-r1-a1               exit 0  PASS: on a parse refusal determineFetchOperation ran (1), createClientMetadata never did.
+20261013T182312Z-v26.7.0-c04-r1-a1               exit 0  PASS: the unknown property is accepted; malformed JSON, missing client_id, mismatched clie
+20261013T182312Z-v26.7.0-c05-r1-a1               exit 0  PASS: no parse refusal left (7 accepted, 1 refused for an allowlist host).
+20261013T182312Z-v26.7.0-c06-r1-a1               exit 0  PASS: both doors closed in a default realm — CIMD refused at parse time, anonymous regis
+20261013T182312Z-v26.7.0-c07-r1-a1               exit 0  PASS: every realm advertises CIMD; with DCR open, both realms refuse the document — 'Cli
+20261013T182312Z-v26.7.0-c08-r1-a1               exit 77  NOT RUN [vendor-fetch]: not fetched by Keycloak (network): lab-cimd-only-lenient copilot-c
+20261013T182312Z-v26.7.0-c08-r1-a2               exit 0  PASS: CIMD only: stock 3/8, lenient-cimd 7/8.
+20261013T182312Z-v26.7.0-c09-r1-a1               exit 0  PASS: IPv4-only 400 (DOMAIN:[::1]), '::1' 400 (DOMAIN:[::1]), '[::1]' 200 — the executor
+20261013T182312Z-v26.7.0-c10-r1-a1               exit 0  PASS: all eight accepted and persisted in one run, with anonymous registration refused (40
+20261013T182312Z-v26.8.0-c01-r1-a1               exit 0  PASS: 5 of 8 refused by stock Keycloak 26.8.0 at parse time, 3 accepted.
+20261013T182312Z-v26.8.0-c02-r1-a1               exit 0  PASS: present -> refused (parse), removed -> accepted, added -> refused (parse), untouched
+20261013T182312Z-v26.8.0-c03-r1-a1               exit 0  PASS: on a parse refusal determineFetchOperation ran (1), createClientMetadata never did.
+20261013T182312Z-v26.8.0-c04-r1-a1               exit 0  PASS: the unknown property is accepted; malformed JSON, missing client_id, mismatched clie
+20261013T182312Z-v26.8.0-c05-r1-a1               exit 0  PASS: no parse refusal left (7 accepted, 1 refused for an allowlist host).
+20261013T182312Z-v26.8.0-c06-r1-a1               exit 0  PASS: both doors closed in a default realm — CIMD refused at parse time, anonymous regis
+20261013T182312Z-v26.8.0-c07-r1-a1               exit 0  PASS: every realm advertises CIMD; with DCR open, both realms refuse the document — 'Cli
+20261013T182312Z-v26.8.0-c08-r1-a1               exit 0  PASS: CIMD only: stock 3/8, lenient-cimd 7/8.
+20261013T182312Z-v26.8.0-c09-r1-a1               exit 0  PASS: IPv4-only 400 (DOMAIN:[::1]), '::1' 400 (DOMAIN:[::1]), '[::1]' 200 — the executor
+20261013T182312Z-v26.8.0-c10-r1-a1               exit 0  PASS: all eight accepted and persisted in one run, with anonymous registration refused (40
+# Lab summary — session 20261013T182312Z
+
+| check | Keycloak 26.7.0 | Keycloak 26.8.0 |
+|---|---|---|
+| 01 stock-compatibility | 1/1 PASS | 1/1 PASS |
+| 02 causality | 1/1 PASS | 1/1 PASS |
+| 03 provider-hook | 1/1 PASS | 1/1 PASS |
+| 04 negative-controls | 1/1 PASS | 1/1 PASS |
+| 05 extension-real-documents | 1/1 PASS | 1/1 PASS |
+| 06 two-doors | 1/1 PASS | 1/1 PASS |
+| 07 advertisement | 1/1 PASS | 1/1 PASS |
+| 08 cimd-only-posture | 1/1 PASS | 1/1 PASS |
+| 09 ipv6-allowlist | 1/1 PASS | 1/1 PASS |
+| 10 eight-in-one-run | 1/1 PASS | 1/1 PASS |
+
+Attempts that ended NOT RUN [vendor-fetch] and were tried again: 1
+- 20261013T182312Z-v26.7.0-c08-r1-a1: NOT RUN [vendor-fetch]: not fetched by Keycloak (network): lab-cimd-only-lenient copilot-cli
+
+Problems: 0
+
