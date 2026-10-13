@@ -1,0 +1,7 @@
+cimd-fetch-parse
+Copyright 2026 Mustafa DAYIOĞLU (GraphSentinel)
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+The checks fetch Client ID Metadata Documents published by third parties (OpenAI, opencode, goose, Visual Studio Code,
+GitHub Copilot CLI, Hermes Agent) at run time; those documents are not part of this repository.

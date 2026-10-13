@@ -1,0 +1,112 @@
+check	field	value	why
+01	accepted	3	
+01	refused_parse	5	
+01	status:openai-chatgpt	400	
+01	cause:openai-chatgpt	PARSE:token_endpoint_auth_methods_supported	refused at parse time on this property (server log)
+01	message:openai-chatgpt	Client Metadata fetch failed	what the caller is shown; the reason is only in the server log
+01	status:openai-codex	400	
+01	cause:openai-codex	PARSE:token_endpoint_auth_methods_supported	refused at parse time on this property (server log)
+01	message:openai-codex	Client Metadata fetch failed	what the caller is shown; the reason is only in the server log
+01	status:openai-atlas	400	
+01	cause:openai-atlas	PARSE:token_endpoint_auth_methods_supported	refused at parse time on this property (server log)
+01	message:openai-atlas	Client Metadata fetch failed	what the caller is shown; the reason is only in the server log
+01	status:opencode	400	
+01	cause:opencode	PARSE:token_endpoint_auth_methods_supported	refused at parse time on this property (server log)
+01	message:opencode	Client Metadata fetch failed	what the caller is shown; the reason is only in the server log
+01	status:goose	400	
+01	cause:goose	PARSE:code_challenge_methods_supported	
+01	message:goose	Client Metadata fetch failed	what the caller is shown; the reason is only in the server log
+01	status:vscode	200	
+01	cause:vscode	-	
+01	message:vscode	-	
+01	status:copilot-cli	200	
+01	cause:copilot-cli	-	
+01	message:copilot-cli	-	
+01	status:hermes-agent	200	
+01	cause:hermes-agent	-	
+01	message:hermes-agent	-	
+02	result:cause-a	refused	
+02	result:cause-b	accepted	
+02	result:cause-c	refused	
+02	result:cause-d	accepted	
+02	cause:cause-a	PARSE:token_endpoint_auth_methods_supported	
+02	cause:cause-c	PARSE:token_endpoint_auth_methods_supported	
+03	accepted_status	200	
+03	accepted_determine	[1-9][0-9]*	
+03	accepted_create	[1-9][0-9]*	
+03	refused_status	400	
+03	refused_determine	[1-9][0-9]*	
+03	refused_create	0	
+03	refused_cause	PARSE:token_endpoint_auth_methods_supported	
+04	result:ctl-clean	accepted	
+04	cause:ctl-clean	-	
+04	result:ctl-unknown	accepted	
+04	cause:ctl-unknown	-	
+04	result:ctl-badjson	refused	
+04	cause:ctl-badjson	MALFORMED_JSON	
+04	result:ctl-noid	refused	
+04	cause:ctl-noid	CLIENT_ID_MISSING	
+04	result:ctl-otherid	refused	
+04	cause:ctl-otherid	CLIENT_ID_MISMATCH	
+04	result:ctl-typo	refused	
+04	cause:ctl-typo	REDIRECT_MISMATCH	
+04	result:ctl-foreign	refused	
+04	cause:ctl-foreign	DOMAIN:other-domain\.example	
+05	accepted	7	
+05	refused_domain	1	
+05	cause:goose	DOMAIN:\[::1\]	goose's IPv6 redirect is not in this allowlist (check 09)
+05	status:openai-chatgpt	200	
+05	cause:openai-chatgpt	-	
+05	status:openai-codex	200	
+05	cause:openai-codex	-	
+05	status:openai-atlas	200	
+05	cause:openai-atlas	-	
+05	status:opencode	200	
+05	cause:opencode	-	
+05	status:vscode	200	
+05	cause:vscode	-	
+05	status:copilot-cli	200	
+05	cause:copilot-cli	-	
+05	status:hermes-agent	200	
+05	cause:hermes-agent	-	
+05	status:goose	400	
+06	positive_control	200	
+06	door1_status	400	
+06	door1_cause	PARSE:token_endpoint_auth_methods_supported	
+06	door2_status	403	
+06	door2_policy	Policy 'Trusted Hosts'	
+07	m1_feature_on	true	
+07	m1_feature_off	absent	
+07	m2_no_policy_realm	true	
+07	realmA_dcr	201	
+07	realmA_cimd	400	
+07	realmA_message	Client not found	
+07	realmB_dcr	201	
+07	realmB_cimd	400	
+07	realmB_message	Client Metadata fetch failed	
+07	realmB_cause	PARSE:token_endpoint_auth_methods_supported	
+07	positive_control	200	
+08	stock_accepted	3	
+08	stock_refused	5	
+08	lenient_accepted	7	
+08	lenient_refused	1	
+09	ipv4_status	400	
+09	ipv4_cause	DOMAIN:\[::1\]	
+09	bare_status	400	
+09	bare_cause	DOMAIN:\[::1\]	the bare ::1 form does not match the bracketed host Keycloak compares
+09	bracketed_status	200	
+09	bracketed_cause	-	
+10	dcr	403	
+10	accepted	8	
+10	rows_before	0	
+10	rows_after	8	
+10	same_client_ids	yes	
+10	not_fetched	0	
+10	status:openai-chatgpt	200	
+10	status:openai-codex	200	
+10	status:openai-atlas	200	
+10	status:opencode	200	
+10	status:vscode	200	
+10	status:copilot-cli	200	
+10	status:hermes-agent	200	
+10	status:goose	200	

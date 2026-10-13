@@ -1,0 +1,10 @@
+lab/.runtime/
+results/
+target/
+__pycache__/
+*.pyc
+.env
+*.key
+*.pem
+*.kubeconfig
+*.tar
