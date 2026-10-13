@@ -10,7 +10,7 @@ cd "$(dirname "$0")/.." || exit 77
 . scripts/common.sh
 KC=$KC_EXT; REALM=lab-provider-hook
 refresh
-"$ENGINE" inspect --format '{{json .Config.Cmd}}' "$C_EXT" 2>/dev/null | grep -q 'cimd-provider-name=logging-cimd' \
+grep -q 'cimd-provider-name=logging-cimd' <<<"$("$ENGINE" inspect --format '{{json .Config.Cmd}}' "$C_EXT" 2>/dev/null)" \
   || not_run "the logging-cimd provider is not selected on $C_EXT"
 ACC_URL=https://vscode.dev/oauth/client-metadata.json; REF_URL=https://chatgpt.com/oauth/codex/client.json
 sub AJ fetch_or_skip $ACC_URL; sub RJ fetch_or_skip $REF_URL

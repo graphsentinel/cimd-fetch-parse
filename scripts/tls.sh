@@ -7,7 +7,7 @@ cd "$(dirname "$0")/.."
 D=lab/.runtime/tls
 MD_HOST=${MD_HOST:?MD_HOST required}
 if [ -f "$D/chain.pem" ] && [ "${1:-}" != --force ] && openssl x509 -in "$D/server.pem" -noout -checkend 86400 >/dev/null \
-   && openssl x509 -in "$D/server.pem" -noout -ext subjectAltName | grep -q "DNS:$MD_HOST"; then
+   && grep -q "DNS:$MD_HOST" <<<"$(openssl x509 -in "$D/server.pem" -noout -ext subjectAltName)"; then
   echo "tls: existing certificate for $MD_HOST"; exit 0; fi
 mkdir -p "$D"; chmod 700 "$D"
 T=$(mktemp -d); trap 'rm -rf "$T"' EXIT

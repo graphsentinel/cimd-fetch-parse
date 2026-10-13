@@ -7,7 +7,7 @@
 # status: what the lab needs, and whether the container engine runs a container.
 set -euo pipefail
 PKGS=(podman uidmap jq curl python3 openssl iproute2 ca-certificates)
-missing(){ local p m=(); for p in "$@"; do dpkg-query -W -f='${Status}' "$p" 2>/dev/null | grep -q "install ok installed" || m+=("$p"); done; echo "${m[@]}"; }
+missing(){ local p m=(); for p in "$@"; do grep -q "install ok installed" <<<"$(dpkg-query -W -f='${Status}' "$p" 2>/dev/null)" || m+=("$p"); done; echo "${m[@]}"; }
 
 install(){
   [ "$(. /etc/os-release; echo "$ID")" = ubuntu ] || echo "warning: tested on Ubuntu 24.04 and 26.04 only" >&2

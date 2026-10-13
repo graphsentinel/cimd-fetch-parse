@@ -51,23 +51,29 @@ start_bg(){ # start_bg <pidfile> <log> <command...>
   setsid nohup "$@" > "$lg" 2>&1 < /dev/null & echo $! > "$pf"; }
 alive(){ [ -f "$1" ] && kill -0 "$(cat "$1")" 2>/dev/null; }
 ours(){ # ours <pidfile> <script>: the pid is alive and runs this checkout's script (a reused pid is never killed)
-  alive "$1" && tr '\0' '\n' < "/proc/$(cat "$1")/cmdline" 2>/dev/null | grep -qxF "$ROOT/scripts/$2"; }
+  alive "$1" && grep -qxF "$ROOT/scripts/$2" <<<"$(tr '\0' '\n' < "/proc/$(cat "$1")/cmdline" 2>/dev/null)"; }
 holds(){ # holds <pidfile> <script> <ip> <port>: ours, and it is the process listening on that address
-  ours "$1" "$2" && ss -ltnpH "( sport = :$4 )" 2>/dev/null | awk -v a="$3:$4" '$4==a' | grep -q "pid=$(cat "$1"),"; }
+  ours "$1" "$2" && grep -q "pid=$(cat "$1")," <<<"$(ss -ltnpH "( sport = :$4 )" 2>/dev/null | awk -v a="$3:$4" '$4==a')"; }
 labeled(){ [ "$("$ENGINE" inspect --format '{{index .Config.Labels "cimdlab.root"}}' "$1" 2>/dev/null)" = "$ROOT" ]; }
 # A Keycloak port is ours when this checkout's container for it is running with KC_HTTP_PORT=<port>: rootless
 # containers hide the socket's pid from ss, and Keycloak exits when it cannot bind, so running = holding its port.
 kc_holds(){ labeled "$1" && [ "$("$ENGINE" inspect --format '{{.State.Running}}' "$1" 2>/dev/null)" = true ] \
-  && "$ENGINE" inspect --format '{{range .Config.Env}}{{println .}}{{end}}' "$1" | grep -qx "KC_HTTP_PORT=$2"; }
+  && grep -qx "KC_HTTP_PORT=$2" <<<"$("$ENGINE" inspect --format '{{range .Config.Env}}{{println .}}{{end}}' "$1" 2>/dev/null)"; }
 need_ss(){ command -v ss >/dev/null || die "ss not found (iproute2): run scripts/platform.sh install"; }
-listening(){ ss -ltnH "( sport = :$2 )" 2>/dev/null | awk '{print $4}' | grep -qxF -e "$1:$2" -e "[::ffff:$1]:$2"; }   # listening <ip> <port>
-other_listener(){ ss -ltnH "( sport = :$1 )" 2>/dev/null | awk -v a="127.0.0.2:$1" '$4!=a' | grep -q .; }  # anything but our proxy address
+# Never `producer | grep -q` here: under pipefail a producer killed by SIGPIPE (grep exits on the first match) fails
+# the pipeline at random — and a negated test would then pass. Output is captured first, then matched.
+addrs(){ ss -ltnH "( sport = :$1 )" 2>/dev/null | awk '{print $4}'; }   # addrs <port>: listening local addresses
+listening(){ grep -qxF -e "$1:$2" -e "[::ffff:$1]:$2" <<<"$(addrs "$2")"; }   # listening <ip> <port>
+except(){ # except <port> <allowed address...>: true when a listener on the port has an address not in the list
+  local p=$1; shift; awk -v ok="$*" 'BEGIN{n=split(ok,a," "); for(i=1;i<=n;i++) A[a[i]]=1} NF && !($0 in A){f=1} END{exit !f}' <<<"$(addrs "$p")"; }
+other_listener(){ except "$1" "127.0.0.2:$1"; }                                       # anything but our proxy address
+foreign_listener(){ except "$1" "127.0.0.2:$1" "127.0.0.1:$1" "[::ffff:127.0.0.1]:$1"; }   # anything but proxy + Keycloak
 
 kc_run(){ # kc_run <name> <version> <port> <kind>
   local name=$1 v=$2 port=$3 kind=$4 img; img="$KEYCLOAK_IMAGE@$(digest "$v")"
   if "$ENGINE" inspect "$name" >/dev/null 2>&1; then
     labeled "$name" || die "a container named $name exists that this checkout did not create — not touched"
-    "$ENGINE" inspect --format '{{range .Config.Env}}{{println .}}{{end}}' "$name" | grep -qx "KC_HTTP_PORT=$port" \
+    grep -qx "KC_HTTP_PORT=$port" <<<"$("$ENGINE" inspect --format '{{range .Config.Env}}{{println .}}{{end}}' "$name")" \
       || die "$name exists on another port (PORT_BASE changed?): run 'scripts/lab.sh uninstall' with the old PORT_BASE first"
     "$ENGINE" start "$name" >/dev/null; return; fi
   local args=(-d --name "$name" --label cimdlab=1 --label "cimdlab.root=$ROOT" --network host -e KC_HTTP_PORT="$port" -e KC_HTTP_HOST=127.0.0.1
@@ -92,7 +98,7 @@ owned_once(){ # owned_once <version>: every listener of that version is held by 
   local p k c i=0; for p in $(ports "$1"); do k=$(echo stock ext noflag | cut -d' ' -f$((i+1))); i=$((i+1)); c=cimdlab-$k-$1
     listening 127.0.0.1 "$p" || { echo "127.0.0.1:$p: nothing listening" >&2; return 1; }
     kc_holds "$c" "$p" || { echo "127.0.0.1:$p: $c is not this checkout's running container for that port" >&2; return 1; }
-    ! ss -ltnH "( sport = :$p )" | awk '{print $4}' | grep -vxF -e "127.0.0.2:$p" -e "127.0.0.1:$p" -e "[::ffff:127.0.0.1]:$p" | grep -q . \
+    ! foreign_listener "$p" \
       || { echo "port $p: another listener besides the lab's" >&2; return 1; }
     holds "$RT/proxy-$p.pid" recording-proxy.py 127.0.0.2 "$p" || { echo "127.0.0.2:$p is not this lab's proxy" >&2; return 1; }
   done
@@ -105,10 +111,10 @@ preflight(){ # every port this lab needs must be free or held by this lab's own 
   need_ss
   local v p k i busy=; for v in $VERSIONS; do i=0; for p in $(ports "$v"); do k=$(echo stock ext noflag | cut -d' ' -f$((i+1))); i=$((i+1))
     if other_listener "$p"; then
-      { kc_holds "cimdlab-$k-$v" "$p" && ! ss -ltnH "( sport = :$p )" | awk '{print $4}' | grep -vxF -e "127.0.0.2:$p" -e "127.0.0.1:$p" -e "[::ffff:127.0.0.1]:$p" | grep -q .; } || busy+=" $p"; fi
+      { kc_holds "cimdlab-$k-$v" "$p" && ! foreign_listener "$p"; } || busy+=" $p"; fi
     if listening 127.0.0.2 "$p"; then holds "$RT/proxy-$p.pid" recording-proxy.py 127.0.0.2 "$p" || busy+=" 127.0.0.2:$p"; fi
   done; done
-  if ss -ltnH "( sport = :8443 )" | grep -q . && ! holds "$RT/metadata.pid" metadata-server.py 0.0.0.0 8443; then busy+=" 8443"; fi
+  if [ -n "$(addrs 8443)" ] && ! holds "$RT/metadata.pid" metadata-server.py 0.0.0.0 8443; then busy+=" 8443"; fi
   [ -z "$busy" ] || die "port(s) in use by another service:$busy — set PORT_BASE (Keycloak ports) or free 8443"; }
 
 install(){
@@ -160,7 +166,7 @@ uninstall(){
   local names; names=$("$ENGINE" ps -a --filter label=cimdlab=1 --filter "label=cimdlab.root=$ROOT" --format '{{.Names}}')
   [ -z "$names" ] || "$ENGINE" rm -f $names >/dev/null
   [ -z "$("$ENGINE" ps -a --filter label=cimdlab=1 --filter "label=cimdlab.root=$ROOT" --format '{{.Names}}')" ] || die "lab containers left"
-  local v p left=; for v in $VERSIONS; do for p in $(ports "$v"); do ss -ltnH "( sport = :$p )" | grep -q . && left+=" $p"; done; done
+  local v p left=; for v in $VERSIONS; do for p in $(ports "$v"); do [ -n "$(addrs "$p")" ] && left+=" $p"; done; done
   [ -z "$left" ] || die "lab ports still in use:$left (another service, or a lab process this script did not start)"
   rm -f "$RT/admin.env" "$RT/admin-password"
   echo "lab removed (containers labelled cimdlab=1, proxies, metadata server)"
