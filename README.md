@@ -104,6 +104,9 @@ scripts/lab.sh uninstall         # removes only this lab's containers and proces
 its selected fields have the expected values (`lab/expected.tsv`) and its requests match the proxy's raw record. It needs internet access (vendor documents, `nip.io`, images) and about
 6 GB of memory for two versions.
 
+The demo (four acts, live against the lab; act 4 a real agent, goose): `VERSIONS=26.8.0 scripts/lab.sh build install`,
+then `demo/run.sh` (`--present` for a talk). See [demo/](demo/).
+
 ## How it works
 
 | Layer | Command | Does |
@@ -169,6 +172,7 @@ the check saw it), `metadata-requests.jsonl`, `stdout.txt`, `manifest.json`
 ## Layout
 
 ```
+demo/          the demo, live: four acts (see its README)
 real-clients/  real agent clients against an MCP server behind the lab Keycloak (see its README)
 checks/        the ten checks (bash)            spi/          lenient-cimd executor, logging-cimd provider (Java)
 scripts/       platform.sh, lab.sh, common.sh, recording-proxy.py, metadata-server.py, summary.py, tls.sh, …

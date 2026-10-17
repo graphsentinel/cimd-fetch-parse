@@ -13,6 +13,7 @@ AS_HOST=${AS_HOST:-127.0.0.2}; [ "$C" = opencodedev ] && AS_HOST=${AS_HOST_OCDEV
 ISSUER=http://$AS_HOST:$KCP/realms/agent-trial
 export TRIAL_OUT=$RUNS/$(date -u +%Y%m%dT%H%M%SZ)-$C-$S${CHALLENGE_SCOPE:+-scoped}; mkdir -p "$TRIAL_OUT/home"
 echo "CHALLENGE_SCOPE=${CHALLENGE_SCOPE:-}" > "$TRIAL_OUT/config.txt"; echo "BROWSER_DRIVER=${BROWSER_DRIVER:-stand-in}" >> "$TRIAL_OUT/config.txt"; echo "AS_HOST=$AS_HOST" >> "$TRIAL_OUT/config.txt"
+[ $C != goose ] || echo "GOOSE_PROVIDER=${GOOSE_PROVIDER:-ollama} GOOSE_MODEL=${GOOSE_MODEL:-qwen3.6:35b}" >> "$TRIAL_OUT/config.txt"
 python3 "$T/mcp-server.py" $MP "$ISSUER" "$TRIAL_OUT/mcp-requests.jsonl" & MPID=$!; sleep 1
 case $C in codex) CID=https://chatgpt.com/oauth/codex/client.json;; opencode|opencode19|opencodedev) CID=https://opencode.ai/oauth/opencode/client.json;; goose) CID=https://goose-docs.ai/oauth/client-metadata.json;; mcpremote) CID=https://goose-docs.ai/oauth/client-metadata.json;; hermes) CID=https://nousresearch.github.io/hermes-agent/docs/oauth/client-metadata.json;; esac
 for i in 1 2; do curl -s -o /dev/null -w "warm %{http_code}\n" --max-time 30 "http://127.0.0.2:$KCP/realms/agent-warm/protocol/openid-connect/auth?client_id=$(jq -rn --arg v "$CID" '$v|@uri')&redirect_uri=$(jq -rn --arg v "http://127.0.0.1:1/callback" '$v|@uri')&response_type=code&scope=openid" >> "$TRIAL_OUT/config.txt"; done
@@ -66,7 +67,7 @@ case $C in
     # mcp-remote with its defaults (as Claude Desktop and others use it): no --client-metadata-url
     timeout ${MCPR_TIMEOUT:-90} npx -y mcp-remote@${MCPR_VERSION:-0.15.1} http://127.0.0.1:$MP/mcp --allow-http > step-login.txt 2>&1 < /dev/null; echo "exit=$?" >> step-login.txt;;
   goose)
-    export GOOSE_PROVIDER=ollama GOOSE_MODEL=qwen3.6:35b OLLAMA_HOST=http://localhost:11434 GOOSE_DISABLE_KEYRING=1
+    export GOOSE_PROVIDER=${GOOSE_PROVIDER:-ollama} GOOSE_MODEL=${GOOSE_MODEL:-qwen3.6:35b} OLLAMA_HOST=${OLLAMA_HOST:-http://localhost:11434} GOOSE_DISABLE_KEYRING=1
     timeout ${GOOSE_TIMEOUT:-300} $CLIENTS/goose-dl/goose run --no-session -t "Call the whoami tool once and print exactly what it returns." \
       --with-streamable-http-extension http://127.0.0.1:$MP/mcp > step-login.txt 2>&1 < /dev/null; echo "exit=$?" >> step-login.txt;;
 esac
