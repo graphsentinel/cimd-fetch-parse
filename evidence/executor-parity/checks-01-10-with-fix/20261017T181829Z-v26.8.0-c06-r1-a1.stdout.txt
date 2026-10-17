@@ -1,0 +1,4 @@
+default anonymous registration policies: allowed-client-templates,allowed-protocol-mappers,consent-required,max-clients,registration-web-origins,scope,trusted-hosts
+  door 1 (CIMD, refused document): HTTP 400  PARSE:token_endpoint_auth_methods_supported
+  door 2 (anonymous DCR):          HTTP 403  Policy 'Trusted Hosts'
+PASS: both doors closed in a default realm — CIMD refused at parse time, anonymous registration refused (Policy 'Trusted Hosts').

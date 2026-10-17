@@ -110,3 +110,9 @@ check	field	value	why
 10	status:copilot-cli	200	
 10	status:hermes-agent	200	
 10	status:goose	200	
+11	stock:cache	accepted,accepted,fetches=1	stock executor: two requests, one fetch (cached)
+11	lenient:cache	accepted,accepted,fetches=1	lenient-cimd caches like stock
+11	stock:noauth	accepted,\{"public":true,"auth":"none"\}	no token_endpoint_auth_method: public client
+11	lenient:noauth	accepted,\{"public":true,"auth":"none"\}	lenient-cimd keeps the public-client default
+11	stock:304	accepted,then accepted HTTP 200 -,fetches=1	304 on refresh extends the cache
+11	lenient:304	accepted,then accepted HTTP 200 -,fetches=1	lenient-cimd handles 304 like stock

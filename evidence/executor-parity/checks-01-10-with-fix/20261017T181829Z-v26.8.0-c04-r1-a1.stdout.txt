@@ -1,0 +1,8 @@
+  ctl-clean    HTTP 200  accepted -
+  ctl-unknown  HTTP 200  accepted -
+  ctl-badjson  HTTP 400  refused  MALFORMED_JSON
+  ctl-noid     HTTP 400  refused  CLIENT_ID_MISSING
+  ctl-otherid  HTTP 400  refused  CLIENT_ID_MISMATCH
+  ctl-typo     HTTP 400  refused  REDIRECT_MISMATCH
+  ctl-foreign  HTTP 400  refused  DOMAIN:other-domain.example
+PASS: the unknown property is accepted; malformed JSON, missing client_id, mismatched client_id, redirect_uris typo and a foreign-domain URI are each refused for their own reason.

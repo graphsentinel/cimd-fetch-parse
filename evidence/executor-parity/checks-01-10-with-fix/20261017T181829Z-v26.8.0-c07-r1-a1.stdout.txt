@@ -1,0 +1,5 @@
+M1 master realm: feature on=true  feature off=absent
+M2 realm without a CIMD policy advertises: true
+  realm A (no CIMD policy): DCR=201  CIMD=400  caller: 'Client not found'
+  realm B (CIMD policy):    DCR=201  CIMD=400  caller: 'Client Metadata fetch failed'  server: PARSE:token_endpoint_auth_methods_supported   (positive control 200)
+PASS: every realm advertises CIMD; with DCR open, both realms refuse the document — 'Client not found' vs 'Client Metadata fetch failed'.

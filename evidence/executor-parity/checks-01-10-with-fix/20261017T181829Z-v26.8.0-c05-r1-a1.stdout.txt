@@ -1,0 +1,9 @@
+  openai-chatgpt  HTTP 200  -
+  openai-codex    HTTP 200  -
+  openai-atlas    HTTP 200  -
+  opencode        HTTP 200  -
+  vscode          HTTP 200  -
+  copilot-cli     HTTP 200  -
+  hermes-agent    HTTP 200  -
+  goose           HTTP 400  DOMAIN:[::1]
+PASS: no parse refusal left (7 accepted, 1 refused for an allowlist host).

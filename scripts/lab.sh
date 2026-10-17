@@ -10,14 +10,14 @@
 # Containers carry the labels cimdlab=1 and cimdlab.root=<this checkout>; 'uninstall' removes only those, and kills
 # only processes whose command line is this checkout's script and whose pid is in this lab's pidfiles.
 #
-# Options: ENGINE (podman|docker, auto), VERSIONS, RUNS (3), CHECKS ("01 … 10"), ATTEMPTS (3: a check that ends
+# Options: ENGINE (podman|docker, auto), VERSIONS, RUNS (3), CHECKS ("01 … 11"), ATTEMPTS (3: a check that ends
 #   "NOT RUN [vendor-fetch]" — a vendor document was not fetched — is tried again; every attempt is kept), MD_HOST, PORT_BASE (18100).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 ROOT=$PWD; RT=$ROOT/lab/.runtime; mkdir -p "$RT"
 . scripts/versions.env
 VERSIONS=${VERSIONS:-$VERSIONS_DEFAULT}; RUNS=${RUNS:-3}; ATTEMPTS=${ATTEMPTS:-3}; PORT_BASE=${PORT_BASE:-18100}
-CHECKS=${CHECKS:-"01 02 03 04 05 06 07 08 09 10"}
+CHECKS=${CHECKS:-"01 02 03 04 05 06 07 08 09 10 11"}
 ADMIN_USER=lab-admin
 if [ -z "${ENGINE:-}" ]; then
   if command -v podman >/dev/null; then ENGINE=podman; elif command -v docker >/dev/null; then ENGINE=docker

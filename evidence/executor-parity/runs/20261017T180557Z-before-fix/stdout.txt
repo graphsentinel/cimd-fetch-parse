@@ -1,0 +1,6 @@
+  waiting 305s for the cached copies to expire
+  case    stock executor                                             lenient-cimd
+  cache   accepted,accepted,fetches=1                                accepted,accepted,fetches=2
+  noauth  accepted,{"public":true,"auth":"none"}                     accepted,{"public":false,"auth":"client-secret"}
+  304     accepted,then accepted HTTP 200 -,fetches=1                accepted,then refused HTTP 400 UNKNOWN,fetches=1
+FAIL: cache: stock 'accepted,accepted,fetches=1' vs lenient-cimd 'accepted,accepted,fetches=2'; noauth: stock 'accepted,{"public":true,"auth":"none"}' vs lenient-cimd 'accepted,{"public":false,"auth":"client-secret"}'; 304: stock 'accepted,then accepted HTTP 200 -,fetches=1' vs lenient-cimd 'accepted,then refused HTTP 400 UNKNOWN,fetches=1'; 

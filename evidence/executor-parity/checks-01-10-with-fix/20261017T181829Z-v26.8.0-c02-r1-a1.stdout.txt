@@ -1,0 +1,5 @@
+  cause-a  token_endpoint_auth_methods_supported present=true  HTTP 400  refused PARSE:token_endpoint_auth_methods_supported
+  cause-b  token_endpoint_auth_methods_supported present=false  HTTP 200  accepted -
+  cause-c  token_endpoint_auth_methods_supported present=true  HTTP 400  refused PARSE:token_endpoint_auth_methods_supported
+  cause-d  token_endpoint_auth_methods_supported present=false  HTTP 200  accepted -
+PASS: present -> refused (parse), removed -> accepted, added -> refused (parse), untouched -> accepted.

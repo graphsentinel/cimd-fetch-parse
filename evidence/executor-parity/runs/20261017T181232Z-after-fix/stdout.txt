@@ -1,0 +1,6 @@
+  waiting 305s for the cached copies to expire
+  case    stock executor                                             lenient-cimd
+  cache   accepted,accepted,fetches=1                                accepted,accepted,fetches=1
+  noauth  accepted,{"public":true,"auth":"none"}                     accepted,{"public":true,"auth":"none"}
+  304     accepted,then accepted HTTP 200 -,fetches=1                accepted,then accepted HTTP 200 -,fetches=1
+PASS: lenient-cimd caches, defaults the auth method and handles 304 like the stock executor.

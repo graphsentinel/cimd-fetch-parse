@@ -1,0 +1,3 @@
+  accepted document (VS Code):     HTTP 200  determineFetchOperation=1  createClientMetadata=1
+  refused document (OpenAI Codex): HTTP 400  determineFetchOperation=1  createClientMetadata=0  PARSE:token_endpoint_auth_methods_supported
+PASS: on a parse refusal determineFetchOperation ran (1), createClientMetadata never did.

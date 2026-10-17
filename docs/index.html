@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fetch Succeeded, Parse Failed</title>
-<meta name="description" content="Published MCP client identities (CIMD) against Keycloak: which are accepted, why the rest are refused, where an extension can act, and what a narrow change costs. Ten checks, a lab, raw evidence.">
+<meta name="description" content="Published MCP client identities (CIMD) against Keycloak: which are accepted, why the rest are refused, where an extension can act, and what a narrow change costs. Eleven checks, a lab, raw evidence.">
 <style>
 :root{--bg:#fbfbfa;--fg:#1d1f21;--muted:#5b6066;--line:#e3e4e6;--card:#ffffff;--accent:#0b6e5a;--refused:#a33a2b;--ok:#2d6a2f;--code:#f1f2f3}
 @media (prefers-color-scheme: dark){:root{--bg:#121416;--fg:#e6e7e8;--muted:#9aa0a6;--line:#2b2f33;--card:#181b1e;--accent:#6fcfb4;--refused:#f08c7a;--ok:#8fd18f;--code:#1f2326}}
@@ -38,7 +38,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);color:v
 <main>
 <h1>Fetch Succeeded, Parse Failed</h1>
 <p class="sub">Published MCP client identities (CIMD) against Keycloak: which are accepted, why the rest are refused, where an
-extension can act, and what a narrow change costs in validation coverage. Ten checks you can run on your own machine.</p>
+extension can act, and what a narrow change costs in validation coverage. Eleven checks you can run on your own machine.</p>
 
 <ul class="links">
   <li><a href="https://github.com/graphsentinel/cimd-fetch-parse">Repository</a></li>
@@ -96,6 +96,10 @@ extension can act, and what a narrow change costs in validation coverage. Ten ch
   receives the document, is never called when the parse fails. The executor's fetch-and-parse is where the document is.</li>
   <li><strong>One fetch-and-parse override</strong> (one Jackson flag): all eight accepted and persisted in one run, with
   anonymous registration refused in the same realm; five negative controls stay refused, each for its own reason.</li>
+  <li><strong>The override keeps the stock executor's other behaviour</strong> (check 11): our first version lost caching,
+  the public-client default and 304 handling on refresh; the current one matches the stock executor on all three, and
+  checks 01–10 and the real clients give the same results with it
+  (<a href="https://github.com/graphsentinel/cimd-fetch-parse/tree/main/evidence/executor-parity">evidence</a>).</li>
 </ul>
 
 <h2>Not claimed</h2>
@@ -105,9 +109,11 @@ extension can act, and what a narrow change costs in validation coverage. Ten ch
   <a href="https://github.com/keycloak/keycloak/issues/51236">#51236</a> and the open PR
   <a href="https://github.com/keycloak/keycloak/pull/51235">#51235</a>, and
   <a href="https://github.com/keycloak/keycloak/issues/53363">#53363</a> for the registration endpoint. This work adds the
-  measured matrix, the single-variable cause, the extension point and a bounded regression set.</li>
+  measured matrix, the single-variable cause, the extension point and a bounded regression set. The same parser change
+  was also written as downstream executors by Lukas Chripko (described on PR #51235) and MemoryOS
+  (<a href="https://github.com/kl3inIT/MemoryOS/pull/436">kl3inIT/MemoryOS#436</a>).</li>
   <li><strong>Not a fix.</strong> <code>lenient-cimd</code> is an experiment on an internal SPI, to be removed when upstream
-  resolves the issue. Its negative controls are bounded coverage, not proof that nothing else changed.</li>
+  resolves the issue. Its negative controls and check 11 are bounded coverage, not proof that nothing else changed.</li>
   <li>Eight documents in the checks (plus two probed later) and eight client builds are not an ecosystem ratio. The lab checks stop at the login page; token issuance is measured for the programs above. ChatGPT and Atlas are hosted (not testable locally); VS Code was not measured end to end.</li>
 </ul>
 
@@ -116,7 +122,7 @@ extension can act, and what a narrow change costs in validation coverage. Ten ch
 scripts/platform.sh install   # only what is missing: podman, jq, curl, python3, openssl, iproute2
 scripts/lab.sh all            # build, start the lab, run every check 3x on 26.7.0 and 26.8.0
 scripts/lab.sh uninstall      # removes only this lab's containers and processes</code></pre>
-<p>Reference runs: clean Ubuntu 26.04 VM, 100/100 checks PASS over five rounds; clean Ubuntu 24.04 VM, 20/20; each
+<p>Reference runs of checks 01–10 (made with the first version of <code>lenient-cimd</code>): clean Ubuntu 26.04 VM, 100/100 checks PASS over five rounds; clean Ubuntu 24.04 VM, 20/20; each
 followed by a reinstall round (20/20) and an uninstall. Raw requests, server logs and summaries are in
 <a href="https://github.com/graphsentinel/cimd-fetch-parse/tree/main/evidence">evidence/</a>.</p>
 

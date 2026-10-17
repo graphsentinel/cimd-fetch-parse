@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Local HTTPS metadata server for the lab: serves the scenario documents the checks write.
 
-  GET /c/<name>.json   the document <SCENARIOS>/<name>.json (404 if missing)
+  GET /c/<name>.json   the document <SCENARIOS>/<name>.json (404 if missing); optional <name>.headers.json adds response
+                       headers, optional <name>.status sets the status code (304 is sent without a body)
   GET /p/<anything>    a probe target (redirect URIs point here); answers {}
   GET /_requests       every request seen so far (this endpoint itself is not recorded)
 
@@ -37,9 +38,13 @@ class Handler(http.server.BaseHTTPRequestHandler):
     def log_message(self, *a):
         pass
 
-    def send(self, code, body=b"", ctype="application/json"):
+    def send(self, code, body=b"", ctype="application/json", headers=None):
         self.send_response(code)
         self.send_header("content-type", ctype)
+        for k, v in (headers or {}).items():
+            self.send_header(k, v)
+        if code == 304:
+            body = b""   # RFC 9110 §15.4.5: no content
         self.send_header("content-length", str(len(body)))
         self.end_headers()
         if body:
@@ -61,8 +66,18 @@ class Handler(http.server.BaseHTTPRequestHandler):
             if not os.path.exists(p):
                 self.send(404, b'{"error":"no such scenario"}')
                 return
+            # optional, next to the document: <name>.headers.json (extra response headers, e.g. Cache-Control) and
+            # <name>.status (the status code to answer with, e.g. 304)
+            base = p[:-len(".json")]
+            headers, code = {}, 200
+            if os.path.exists(base + ".headers.json"):
+                with open(base + ".headers.json") as f:
+                    headers = json.load(f)
+            if os.path.exists(base + ".status"):
+                with open(base + ".status") as f:
+                    code = int(f.read().strip())
             with open(p, "rb") as f:
-                self.send(200, f.read())
+                self.send(code, f.read(), headers=headers)
             return
         if path.startswith("/p/"):
             record(self, "probe")

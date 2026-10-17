@@ -1,0 +1,5 @@
+  lab-cimd-only-stock: anonymous registration HTTP 403 (Policy 'Trusted Hosts')
+  lab-cimd-only-lenient: anonymous registration HTTP 403 (Policy 'Trusted Hosts')
+  stock executor:   3 accepted / 5 refused
+  lenient-cimd:     7 accepted / 1 refused
+PASS: CIMD only: stock 3/8, lenient-cimd 7/8.

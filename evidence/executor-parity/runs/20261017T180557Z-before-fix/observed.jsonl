@@ -1,0 +1,10 @@
+{"kind":"auth","realm":"lab-parity-client","client_id":"https://md-host.nip.io:8443/c/par-cache-client.json","status":"200"}
+{"kind":"auth","realm":"lab-parity-client","client_id":"https://md-host.nip.io:8443/c/par-cache-client.json","status":"200"}
+{"kind":"auth","realm":"lab-parity-client","client_id":"https://md-host.nip.io:8443/c/par-noauth-client.json","status":"200"}
+{"kind":"auth","realm":"lab-parity-client","client_id":"https://md-host.nip.io:8443/c/par-304-client.json","status":"200"}
+{"kind":"auth","realm":"lab-parity-lenient","client_id":"https://md-host.nip.io:8443/c/par-cache-lenient.json","status":"200"}
+{"kind":"auth","realm":"lab-parity-lenient","client_id":"https://md-host.nip.io:8443/c/par-cache-lenient.json","status":"200"}
+{"kind":"auth","realm":"lab-parity-lenient","client_id":"https://md-host.nip.io:8443/c/par-noauth-lenient.json","status":"200"}
+{"kind":"auth","realm":"lab-parity-lenient","client_id":"https://md-host.nip.io:8443/c/par-304-lenient.json","status":"200"}
+{"kind":"auth","realm":"lab-parity-client","client_id":"https://md-host.nip.io:8443/c/par-304-client.json","status":"200"}
+{"kind":"auth","realm":"lab-parity-lenient","client_id":"https://md-host.nip.io:8443/c/par-304-lenient.json","status":"400"}

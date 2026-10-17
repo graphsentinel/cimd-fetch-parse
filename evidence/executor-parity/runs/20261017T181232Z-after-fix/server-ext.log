@@ -1,0 +1,11 @@
+2026-10-17 18:12:39,883 INFO  [io.graphsentinel.cimdlab.LoggingCimdProvider] (executor-thread-1) [logging-cimd] ENTRY determineFetchOperation clientId=https://md-host.nip.io:8443/c/par-cache-client.json
+2026-10-17 18:12:40,134 INFO  [io.graphsentinel.cimdlab.LoggingCimdProvider] (executor-thread-1) [logging-cimd] ENTRY createClientMetadata clientId=https://md-host.nip.io:8443/c/par-cache-client.json
+2026-10-17 18:12:42,617 INFO  [io.graphsentinel.cimdlab.LoggingCimdProvider] (executor-thread-1) [logging-cimd] ENTRY determineFetchOperation clientId=https://md-host.nip.io:8443/c/par-cache-client.json
+2026-10-17 18:12:44,876 INFO  [io.graphsentinel.cimdlab.LoggingCimdProvider] (executor-thread-1) [logging-cimd] ENTRY determineFetchOperation clientId=https://md-host.nip.io:8443/c/par-noauth-client.json
+2026-10-17 18:12:44,882 INFO  [io.graphsentinel.cimdlab.LoggingCimdProvider] (executor-thread-1) [logging-cimd] ENTRY createClientMetadata clientId=https://md-host.nip.io:8443/c/par-noauth-client.json
+2026-10-17 18:12:47,177 INFO  [io.graphsentinel.cimdlab.LoggingCimdProvider] (executor-thread-1) [logging-cimd] ENTRY determineFetchOperation clientId=https://md-host.nip.io:8443/c/par-304-client.json
+2026-10-17 18:12:47,183 INFO  [io.graphsentinel.cimdlab.LoggingCimdProvider] (executor-thread-1) [logging-cimd] ENTRY createClientMetadata clientId=https://md-host.nip.io:8443/c/par-304-client.json
+2026-10-17 18:12:52,747 INFO  [io.graphsentinel.cimdlab.LenientCimdExecutor] (executor-thread-1) [lenient-cimd] parsed https://md-host.nip.io:8443/c/par-cache-lenient.json leniently; inherited validation still applies
+2026-10-17 18:12:57,223 INFO  [io.graphsentinel.cimdlab.LenientCimdExecutor] (executor-thread-1) [lenient-cimd] parsed https://md-host.nip.io:8443/c/par-noauth-lenient.json leniently; inherited validation still applies
+2026-10-17 18:12:59,502 INFO  [io.graphsentinel.cimdlab.LenientCimdExecutor] (executor-thread-1) [lenient-cimd] parsed https://md-host.nip.io:8443/c/par-304-lenient.json leniently; inherited validation still applies
+2026-10-17 18:18:06,907 INFO  [io.graphsentinel.cimdlab.LoggingCimdProvider] (executor-thread-1) [logging-cimd] ENTRY determineFetchOperation clientId=https://md-host.nip.io:8443/c/par-304-client.json

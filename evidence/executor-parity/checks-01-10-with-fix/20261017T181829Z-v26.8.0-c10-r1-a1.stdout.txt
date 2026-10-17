@@ -1,0 +1,11 @@
+anonymous registration: HTTP 403 Policy 'Trusted Hosts'
+  openai-chatgpt  HTTP 200  -
+  openai-codex    HTTP 200  -
+  openai-atlas    HTTP 200  -
+  opencode        HTTP 200  -
+  vscode          HTTP 200  -
+  copilot-cli     HTTP 200  -
+  hermes-agent    HTTP 200  -
+  goose           HTTP 200  -
+accepted=8 · CIMD client rows 0 -> 8 · final client_ids = the eight requested: yes
+PASS: all eight accepted and persisted in one run, with anonymous registration refused (403, Trusted Hosts).

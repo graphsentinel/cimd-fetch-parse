@@ -2,7 +2,7 @@
 
 **Published MCP client identities (CIMD) against Keycloak.** Which published client identities stock Keycloak accepts,
 why the rest are refused, which extension point can reach the refusal, and what a narrow change costs in validation
-coverage — as ten checks you can run against a lab on your own machine.
+coverage — as eleven checks you can run against a lab on your own machine.
 
 An MCP client can publish its identity as a URL: a Client ID Metadata Document (CIMD). The authorization server fetches
 the document, parses it into a client, validates it and stores the client. Keycloak supports this as an experimental
@@ -10,7 +10,7 @@ feature (`--features=cimd`) together with a realm client policy.
 
 ## What was measured
 
-Eight CIMD documents published by their vendors (the ten checks), fetched live and **sent to Keycloak by the lab itself**
+Eight CIMD documents published by their vendors (checks 01–10), fetched live and **sent to Keycloak by the lab itself**
 (not by the client programs), against Keycloak **26.7.0 and 26.8.0** (each version separately, every run the summary
 counted; see [evidence/](evidence/)). What the client
 programs themselves do is a separate measurement, in the next table.
@@ -66,10 +66,17 @@ registration refuses with either executor.
   registration refused in the same realm (HTTP 403, Trusted Hosts policy) — check 10.
 - **Five negative controls stay refused, each for its own reason** (check 04): malformed JSON, missing client_id,
   client_id not matching its URL, `redirect_uri` instead of `redirect_uris`, a foreign-domain `logo_uri`.
+- **The override keeps the stock executor's other behaviour** (check 11): same Keycloak, stock executor vs `lenient-cimd`,
+  clean documents. Our first version lost three stock behaviours — caching (two fetches instead of one), the
+  public-client default for a document without `token_endpoint_auth_method` (stored as confidential), and 304 Not Modified
+  on refresh (refused) — because it re-implemented the fetch without the stock method's update path, cache times and
+  `augmentClientOIDC`. The current version follows the stock method and only parses leniently: check 11 PASS, checks
+  01–10 10/10 PASS, the real clients unchanged ([evidence/executor-parity/](evidence/executor-parity/)).
 - **The executor also checks a redirect host the request does not use** (check 09): goose lists an IPv4 and an IPv6
   loopback redirect; with IPv4 hosts only it is refused naming `[::1]`; `::1` does not help, `[::1]` does.
 
-Reference runs ([evidence/](evidence/), raw requests and responses, server logs, summaries): clean Ubuntu 26.04 VM,
+Reference runs of checks 01–10 ([evidence/](evidence/), raw requests and responses, server logs, summaries; made with the
+first version of `lenient-cimd`, before the check 11 fix): clean Ubuntu 26.04 VM,
 5 rounds on both versions, 100/100 checks PASS; clean Ubuntu 24.04 VM, 20/20; each followed by a reinstall round (20/20)
 and an uninstall. Keycloak 26.8.1, measured separately (3 rounds, 30/30), gives the same results.
 
@@ -80,9 +87,11 @@ and an uninstall. Keycloak 26.8.1, measured separately (3 rounds, 30/30), gives 
   the open PR [keycloak#51235](https://github.com/keycloak/keycloak/pull/51235) by achetronic, and
   [keycloak#53363](https://github.com/keycloak/keycloak/issues/53363) by antoniocasagrande-airia for the registration
   endpoint (status as of 2026-10-17). This repository adds
-  the measured matrix, the single-variable cause, the extension point and a bounded regression set.
+  the measured matrix, the single-variable cause, the extension point and a bounded regression set. The same parser
+  change was also written as downstream executors by others: Lukas Chripko (described in a comment on PR #51235) and
+  MemoryOS ([kl3inIT/MemoryOS#436](https://github.com/kl3inIT/MemoryOS/pull/436)).
 - **Not a fix.** `lenient-cimd` is an experiment on an internal SPI; remove it when upstream resolves the issue. Its five
-  negative controls are bounded coverage, not proof that nothing else changed.
+  negative controls and the three stock behaviours of check 11 are bounded coverage, not proof that nothing else changed.
 - Eight documents in the checks (plus two probed later) are not an ecosystem ratio. The checks stop at the login page (acceptance =
   the authorization request is answered with the login page, not an error; check 10 also reads the stored clients); token
   issuance is outside them; the client-program table measures it for eight client builds. Those are not an ecosystem
@@ -138,6 +147,7 @@ auto), `PORT_BASE` (18100; Keycloak ports 18100–18102, 18110–18112, …), `M
 | 08 | anonymous registration locked: stock 3/8 vs `lenient-cimd` 7/8 | extension |
 | 09 | goose: IPv4-only 400 → `::1` 400 → `[::1]` 200 | extension |
 | 10 | all eight accepted and persisted in one run, anonymous registration refused (403) | extension |
+| 11 | `lenient-cimd` vs the stock executor: caching, public-client default, 304 on refresh (waits 305 s) | extension |
 
 **Why a check can end NOT RUN.** The reason for every CIMD refusal is taken from the Keycloak server log of the
 container that answered, bounded to that request (registration policy names and caller messages come from the response
@@ -174,7 +184,7 @@ the check saw it), `metadata-requests.jsonl`, `stdout.txt`, `manifest.json`
 ```
 demo/          the demo, live: four acts (see its README)
 real-clients/  real agent clients against an MCP server behind the lab Keycloak (see its README)
-checks/        the ten checks (bash)            spi/          lenient-cimd executor, logging-cimd provider (Java)
+checks/        the checks 01–11 (bash)            spi/          lenient-cimd executor, logging-cimd provider (Java)
 scripts/       platform.sh, lab.sh, common.sh, recording-proxy.py, metadata-server.py, summary.py, tls.sh, …
 lab/           expected.tsv (the expected value of every recorded field)
 evidence/      raw evidence and summaries of the reference runs

@@ -1,0 +1,15 @@
+{
+  "run_id": "20261017T181829Z-v26.8.0-c09-r1-a1",
+  "session": "20261017T181829Z",
+  "version": "26.8.0",
+  "check": "09",
+  "run": 1,
+  "attempt": 1,
+  "exit": 0,
+  "owned_after": true,
+  "start": "2026-10-17T18:21:46.920638072Z",
+  "end": "2026-10-17T18:22:12.665882734Z",
+  "check_sha256": "edfef94997125b637fdf5522df394877a937eb77d13a9acf28a3a5c3a6d4a5e2",
+  "extension_jar_sha256": "8970ce7843eab57100974c7ed840086c2fc97e88cd091f7e30c9c733a5300899",
+  "keycloak_digest": "sha256:27b3230fbabb8c9ff3c66c864cf09dcd8a41aca82e5100679d109ef0eeb05741"
+}

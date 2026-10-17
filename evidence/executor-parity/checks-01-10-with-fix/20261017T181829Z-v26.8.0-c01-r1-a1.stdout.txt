@@ -1,0 +1,10 @@
+allowlist: 127.0.0.1 chatgpt.com code.visualstudio.com github.com goose-docs.ai hermes-agent.nousresearch.com localhost nousresearch.github.io opencode.ai persistent.oaistatic.com vscode.dev 
+  openai-chatgpt  HTTP 400  refused  PARSE:token_endpoint_auth_methods_supported
+  openai-codex    HTTP 400  refused  PARSE:token_endpoint_auth_methods_supported
+  openai-atlas    HTTP 400  refused  PARSE:token_endpoint_auth_methods_supported
+  opencode        HTTP 400  refused  PARSE:token_endpoint_auth_methods_supported
+  vscode          HTTP 200  accepted  -
+  copilot-cli     HTTP 200  accepted  -
+  hermes-agent    HTTP 200  accepted  -
+  goose           HTTP 400  refused  PARSE:code_challenge_methods_supported
+PASS: 5 of 8 refused by stock Keycloak 26.8.0 at parse time, 3 accepted.

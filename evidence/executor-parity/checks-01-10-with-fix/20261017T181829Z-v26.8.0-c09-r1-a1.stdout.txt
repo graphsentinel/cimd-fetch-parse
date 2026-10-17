@@ -1,0 +1,5 @@
+goose redirect_uris: ["http://127.0.0.1/oauth_callback","http://[::1]/oauth_callback"]   request uses: http://127.0.0.1/oauth_callback
+  IPv4/name hosts only: HTTP 400  DOMAIN:[::1]
+  + ::1                 HTTP 400  DOMAIN:[::1]
+  + [::1]               HTTP 200  -
+PASS: IPv4-only 400 (DOMAIN:[::1]), '::1' 400 (DOMAIN:[::1]), '[::1]' 200 — the executor checks a redirect host the request does not use.
