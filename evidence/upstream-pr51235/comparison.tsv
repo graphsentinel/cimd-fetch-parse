@@ -1,0 +1,85 @@
+document	server	outcome	http	server_reason	caller_message
+anonymous-registration	stock	refused	403	Policy 'Trusted Hosts'	-
+openai-chatgpt	stock	refused	400	PARSE:token_endpoint_auth_methods_supported	Client Metadata fetch failed
+openai-codex	stock	refused	400	PARSE:token_endpoint_auth_methods_supported	Client Metadata fetch failed
+openai-atlas	stock	refused	400	PARSE:token_endpoint_auth_methods_supported	Client Metadata fetch failed
+opencode	stock	refused	400	PARSE:token_endpoint_auth_methods_supported	Client Metadata fetch failed
+vscode	stock	accepted	200	-	-
+copilot-cli	stock	accepted	200	-	-
+hermes-agent	stock	accepted	200	-	-
+goose	stock	refused	400	PARSE:code_challenge_methods_supported	Client Metadata fetch failed
+clean	stock	accepted	200	-	-
+unknown	stock	refused	400	PARSE:token_endpoint_auth_methods_supported	Client Metadata fetch failed
+badjson	stock	refused	400	MALFORMED_JSON	Client Metadata fetch failed
+noid	stock	refused	400	CLIENT_ID_MISSING	Invalid Client Metadata: no client_id.
+otherid	stock	refused	400	CLIENT_ID_MISMATCH	Invalid Client Metadata: client_id property does not exactly match client_id parameter.
+typo	stock	refused	400	PARSE:redirect_uri	Client Metadata fetch failed
+foreign	stock	refused	400	DOMAIN:other-domain.example	Invalid Client ID: domain not allowed.
+redirstr	stock	refused	400	UNKNOWN	Client Metadata fetch failed
+nullunk	stock	refused	400	PARSE:x_unknown	Client Metadata fetch failed
+nested	stock	refused	400	PARSE:x_vendor	Client Metadata fetch failed
+dupkey	stock	accepted	200	-	-
+dupkey-stored-name	stock	lab	-	-	-
+empty	stock	refused	400	UNKNOWN	Client Metadata fetch failed
+array	stock	refused	400	UNKNOWN	Client Metadata fetch failed
+unknownbig	stock	refused	400	PARSE:x_padding	Client Metadata fetch failed
+unknownover	stock	refused	400	UNKNOWN	Client Metadata fetch failed
+cache-two-requests	stock	accepted	-	-	fetches=1
+noauth-client	stock	accepted	200	-	{"public":true,"auth":"none"}
+anonymous-registration	lenient	refused	403	Policy 'Trusted Hosts'	-
+openai-chatgpt	lenient	accepted	200	-	-
+openai-codex	lenient	accepted	200	-	-
+openai-atlas	lenient	accepted	200	-	-
+opencode	lenient	accepted	200	-	-
+vscode	lenient	accepted	200	-	-
+copilot-cli	lenient	accepted	200	-	-
+hermes-agent	lenient	accepted	200	-	-
+goose	lenient	accepted	200	-	-
+clean	lenient	accepted	200	-	-
+unknown	lenient	accepted	200	-	-
+badjson	lenient	refused	400	MALFORMED_JSON	Invalid Client Metadata: cannot be parsed as a client metadata document.
+noid	lenient	refused	400	CLIENT_ID_MISSING	Invalid Client Metadata: no client_id.
+otherid	lenient	refused	400	CLIENT_ID_MISMATCH	Invalid Client Metadata: client_id property does not exactly match client_id parameter.
+typo	lenient	refused	400	REDIRECT_MISMATCH	Invalid Client Metadata: redirect_uri parameter does not exactly match the one of redirect_uris property in client metadata.
+foreign	lenient	refused	400	DOMAIN:other-domain.example	Invalid Client ID: domain not allowed.
+redirstr	lenient	refused	400	MALFORMED_JSON	Invalid Client Metadata: cannot be parsed as a client metadata document.
+nullunk	lenient	accepted	200	-	-
+nested	lenient	accepted	200	-	-
+dupkey	lenient	accepted	200	-	-
+dupkey-stored-name	lenient	lab	-	-	-
+empty	lenient	refused	400	MALFORMED_JSON	Invalid Client Metadata: cannot be parsed as a client metadata document.
+array	lenient	refused	400	MALFORMED_JSON	Invalid Client Metadata: cannot be parsed as a client metadata document.
+unknownbig	lenient	accepted	200	-	-
+unknownover	lenient	refused	400	UNKNOWN	Client Metadata fetch failed
+cache-two-requests	lenient	accepted	-	-	fetches=1
+noauth-client	lenient	accepted	200	-	{"public":true,"auth":"none"}
+anonymous-registration	pr	refused	403	Policy 'Trusted Hosts'	-
+openai-chatgpt	pr	accepted	200	-	-
+openai-codex	pr	accepted	200	-	-
+openai-atlas	pr	accepted	200	-	-
+opencode	pr	accepted	200	-	-
+vscode	pr	accepted	200	-	-
+copilot-cli	pr	accepted	200	-	-
+hermes-agent	pr	accepted	200	-	-
+goose	pr	accepted	200	-	-
+clean	pr	accepted	200	-	-
+unknown	pr	accepted	200	-	-
+badjson	pr	refused	400	UNKNOWN	Invalid Client Metadata: cannot be parsed as a client metadata document.
+noid	pr	refused	400	CLIENT_ID_MISSING	Invalid Client Metadata: no client_id.
+otherid	pr	refused	400	CLIENT_ID_MISMATCH	Invalid Client Metadata: client_id property does not exactly match client_id parameter.
+typo	pr	refused	400	REDIRECT_MISMATCH	Invalid Client Metadata: redirect_uri parameter does not exactly match the one of redirect_uris property in client metadata.
+foreign	pr	refused	400	DOMAIN:other-domain.example	Invalid Client ID: domain not allowed.
+redirstr	pr	refused	400	UNKNOWN	Invalid Client Metadata: cannot be parsed as a client metadata document.
+nullunk	pr	accepted	200	-	-
+nested	pr	accepted	200	-	-
+dupkey	pr	accepted	200	-	-
+dupkey-stored-name	pr	lab	-	-	-
+empty	pr	refused	400	UNKNOWN	Invalid Client Metadata: cannot be parsed as a client metadata document.
+array	pr	refused	400	UNKNOWN	Invalid Client Metadata: cannot be parsed as a client metadata document.
+unknownbig	pr	accepted	200	-	-
+unknownover	pr	refused	400	UNKNOWN	Client Metadata fetch failed
+cache-two-requests	pr	accepted	-	-	fetches=1
+noauth-client	pr	accepted	200	-	{"public":true,"auth":"none"}
+304-on-refresh	stock	accepted	200	-	-
+304-on-refresh	lenient	accepted	200	-	-
+304-on-refresh	pr	accepted	200	-	-

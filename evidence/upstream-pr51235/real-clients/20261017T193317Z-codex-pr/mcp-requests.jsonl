@@ -1,0 +1,9 @@
+{"utc": "2026-10-17T19:33:28.603202+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T19:33:28.603685+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T19:33:28.646713+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T19:33:28.704459+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T19:33:28.747163+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T19:33:28.789845+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T19:33:29.117828+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T19:33:29.122382+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T19:33:29.164863+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "codex-mcp-client/0.153.4"}

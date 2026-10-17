@@ -1,0 +1,2 @@
+Name   Url                         Bearer Token Env Var  Status   Auth 
+trial  http://127.0.0.1:19003/mcp  -                     enabled  OAuth

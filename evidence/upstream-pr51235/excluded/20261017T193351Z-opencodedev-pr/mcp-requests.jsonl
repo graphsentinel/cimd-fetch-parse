@@ -1,0 +1,4 @@
+{"utc": "2026-10-17T19:33:58.867278+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "Bun/1.4.2", "bearer": false, "rpc": "initialize"}
+{"utc": "2026-10-17T19:33:58.882571+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "Bun/1.4.2"}
+{"utc": "2026-10-17T19:33:59.034483+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "Bun/1.4.2", "bearer": false, "rpc": "initialize"}
+{"utc": "2026-10-17T19:33:59.057017+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "Bun/1.4.2"}

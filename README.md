@@ -72,6 +72,10 @@ registration refuses with either executor.
   on refresh (refused) — because it re-implemented the fetch without the stock method's update path, cache times and
   `augmentClientOIDC`. The current version follows the stock method and only parses leniently: check 11 PASS, checks
   01–10 10/10 PASS, the real clients unchanged ([evidence/executor-parity/](evidence/executor-parity/)).
+- **The same documents against the upstream fix** ([evidence/upstream-pr51235/](evidence/upstream-pr51235/)): Keycloak
+  26.8.0 with only keycloak PR #51235 applied (`scripts/upstream-pr.sh`) and `lenient-cimd` give the same outcome,
+  status and caller message in all 28 rows (published documents, controls, edge documents, the check 11 cases), and
+  goose, Codex CLI and opencode's development build get the same results with both.
 - **The executor also checks a redirect host the request does not use** (check 09): goose lists an IPv4 and an IPv6
   loopback redirect; with IPv4 hosts only it is refused naming `[::1]`; `::1` does not help, `[::1]` does.
 

@@ -1,0 +1,1 @@
+MCP server "trial" added to <checkout>/lab/.runtime/real-clients/runs/20261017T193721Z-opencodedev-pr/home/.config/opencode/opencode.json

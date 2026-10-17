@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-# run.sh <codex|opencode> <stock|ext>: one real-client OAuth attempt against the MCP server behind Keycloak.
+# run.sh <client> <stock|ext|pr>: one real-client OAuth attempt against the MCP server behind Keycloak.
 # Isolated HOME per attempt; output in runs/<utc>-<client>-<server>/.
 set -uo pipefail
 T=$(cd "$(dirname "$0")" && pwd); ROOT=$(cd "$T/.." && pwd)
 RUNS=${RUNS_DIR:-$ROOT/lab/.runtime/real-clients/runs}; CLIENTS=${CLIENTS_DIR:-$ROOT/lab/.runtime/real-clients/clients}
 C=$1; S=$2
-case $S in stock) KCP=18100; MP=19000;; ext) KCP=18101; MP=19001;; esac
+case $S in stock) KCP=18100; MP=19000;; ext) KCP=18101; MP=19001;; pr) KCP=${PR_PORT:-18103}; MP=19003;; esac
+KC_CONTAINER=$(case $S in stock) echo cimdlab-stock-26.8.0;; ext) echo cimdlab-ext-26.8.0;; pr) echo "${PR_CONTAINER:-cimdlab-pr51235-26.8.0}";; esac)
 # AS_HOST: the host the MCP server names as authorization server (default the recording proxy, 127.0.0.2). A client that
 # refuses plain http except for localhost needs AS_HOST=localhost: Keycloak itself on 127.0.0.1, no proxy record;
 # events, server log and the MCP server log still apply.
@@ -53,7 +54,7 @@ case $C in
     # its browser opener does not go through $PATH; it prints the URL, which is handed to the same stand-in browser
     # under a pseudo-terminal (script) so it writes as it goes; to a plain file it buffers until exit
     ( COLUMNS=1000 timeout ${OCDEV_TIMEOUT:-150} script -qefc "$OC mcp auth trial" step-login.txt > /dev/null 2>&1 < /dev/null; echo "exit=$?" >> step-login.txt ) & AP=$!
-    for i in $(seq 1 600); do u=$(sed 's/\x1b\[[0-9;?]*[a-zA-Z]//g' step-login.txt 2>/dev/null | grep -aoE 'http://(127\.0\.0\.2|localhost):1810[01]/realms/agent-trial/protocol/openid-connect/auth\?[^ ]+' | head -1 | tr -d '\r')
+    for i in $(seq 1 600); do u=$(sed 's/\x1b\[[0-9;?]*[a-zA-Z]//g' step-login.txt 2>/dev/null | grep -aoE "http://(127\.0\.0\.2|localhost):$KCP/realms/agent-trial/protocol/openid-connect/auth\?[^ ]+" | head -1 | tr -d '\r')
       [ -n "$u" ] && { echo "printed URL handed to the browser driver" >> opened-urls.txt; printf '%s\n' "$u" >> opened-urls.txt; "$T/open-url.sh" "$u" >> driver.log 2>&1; break; }
       kill -0 $AP 2>/dev/null || break; sleep 0.25; done
     wait $AP
@@ -73,7 +74,7 @@ case $C in
 esac
 sleep 2; kill $MPID 2>/dev/null
 tail -n +$((P0+1)) "$ROOT/lab/.runtime/proxy/$KCP.jsonl" > keycloak-requests.jsonl 2>/dev/null
-podman logs --since "$(date -u -d '-4 min' +%FT%TZ)" cimdlab-$([ $S = stock ] && echo stock || echo ext)-26.8.0 2>&1 | grep -iE 'cimd|client.?metadata|Unrecognized|not trusted|LOGIN|CODE_TO_TOKEN|invalid' > keycloak-log.txt
+podman logs --since "$(date -u -d '-4 min' +%FT%TZ)" "$KC_CONTAINER" 2>&1 | grep -iE 'cimd|client.?metadata|Unrecognized|not trusted|LOGIN|CODE_TO_TOKEN|invalid' > keycloak-log.txt
 # Keycloak's own record of what happened (events: LOGIN, CODE_TO_TOKEN = a token was issued to that client_id)
 ( cd "$ROOT" && KC=http://127.0.0.2:$KCP bash -c '. scripts/common.sh; refresh
   kc "$KC/admin/realms/agent-trial/events?max=200" | jq -c "[.[] | {type, clientId, error}] | group_by(.type,.clientId,.error) | map({type:.[0].type, clientId:.[0].clientId, error:.[0].error, n:length})"

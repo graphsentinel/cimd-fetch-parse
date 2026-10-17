@@ -120,7 +120,7 @@ auth(){ # auth <realm> <client_id> <redirect_uri> <container>
   local f t0 t1; f=$(mktemp); t0=$(utc); sleep 1
   H=$(curl -s -o "$f" -w '%{http_code}' --max-time 30 \
     "$KC/realms/$1/protocol/openid-connect/auth?client_id=$(jq -rn --arg v "$2" '$v|@uri')&redirect_uri=$(jq -rn --arg v "$3" '$v|@uri')&response_type=code&scope=openid&state=lab")
-  MSG=$(grep -oiE "Client not found|Client Metadata fetch failed|invalid_[a-z]+" "$f" | head -1 || true)
+  MSG=$(grep -oiE "Client not found|Client Metadata fetch failed|Invalid Client (Metadata|ID|ID / Metadata): [^<\"]*|invalid_[a-z]+" "$f" | head -1 || true)
   if grep -q 'id="kc-form-login"' "$f" && [ -z "$MSG" ]; then PAGE=login; elif [ -n "$MSG" ]; then PAGE=error; else PAGE=other; fi
   rm -f "$f"
   sleep 1; t1=$(utc)

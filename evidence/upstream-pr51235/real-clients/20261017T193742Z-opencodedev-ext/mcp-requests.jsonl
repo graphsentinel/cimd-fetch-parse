@@ -1,0 +1,8 @@
+{"utc": "2026-10-17T19:37:50.265313+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "Bun/1.4.2", "bearer": false, "rpc": "initialize"}
+{"utc": "2026-10-17T19:37:50.285570+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "Bun/1.4.2"}
+{"utc": "2026-10-17T19:37:50.496382+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "Bun/1.4.2", "bearer": false, "rpc": "initialize"}
+{"utc": "2026-10-17T19:37:50.519415+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "Bun/1.4.2"}
+{"utc": "2026-10-17T19:37:51.389297+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "Bun/1.4.2", "bearer": true, "valid": true, "rpc": "initialize", "user": "alice"}
+{"utc": "2026-10-17T19:37:51.399935+00:00", "method": "POST", "path": "/mcp", "status": 202, "ua": "Bun/1.4.2", "bearer": true, "valid": true, "rpc": "notifications/initialized", "user": "alice"}
+{"utc": "2026-10-17T19:37:51.402930+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "Bun/1.4.2"}
+{"utc": "2026-10-17T19:37:51.411435+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "Bun/1.4.2", "bearer": true, "valid": true, "rpc": "tools/list", "user": "alice"}

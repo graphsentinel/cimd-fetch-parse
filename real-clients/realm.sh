@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 # Realm for the real-agent trial: CIMD policy on, anonymous registration LOCKED (trusted hosts = []), one test user.
-#   realm.sh <stock|ext>      (stock = 127.0.0.2:18100, ext = lenient-cimd on 127.0.0.2:18101)
+#   realm.sh <stock|ext|pr>   (stock = 127.0.0.2:18100, ext = lenient-cimd on 127.0.0.2:18101, pr = stock executor on
+#                             127.0.0.2:$PR_PORT (18103), a Keycloak built with an upstream change)
 # Allowlist = hosts of every *uri in the eight published documents + localhost + 127.0.0.1 + [::1]
 # (the trial measures what the client itself does, so the [::1] step of check 09 is not repeated here).
 set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1             # repository root
 . scripts/common.sh
-case "${1:?stock|ext}" in
+case "${1:?stock|ext|pr}" in
   stock) KC=http://127.0.0.2:18100; EX=client-id-metadata-document;;
   ext)   KC=http://127.0.0.2:18101; EX=lenient-cimd;;
+  pr)    KC=http://127.0.0.2:${PR_PORT:-18103}; EX=client-id-metadata-document;;   # Keycloak with an upstream change (see checks/compare-upstream-pr.sh)
 esac
 REALM=agent-trial
 refresh

@@ -1,0 +1,2 @@
+printed URL handed to the browser driver
+http://localhost:18101/realms/agent-trial/protocol/openid-connect/auth?response_type=code&client_id=https%3A%2F%2Fopencode.ai%2Foauth%2Fopencode%2Fclient.json&code_challenge=TZcwN03X36En4jw8CeZQ0IFpHwJbsTVuiRQrv6DSgL8&code_challenge_method=S256&redirect_uri=http%3A%2F%2F127.0.0.1%3A38599%2Fcallback&state=RDTq92MOuKMFu7pIJZrJYOwPYFEZuwHYSsPRPaUkTEI&scope=openid+offline_access&resource=http%3A%2F%2F127.0.0.1%3A19001%2Fmcp
