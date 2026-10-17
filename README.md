@@ -10,21 +10,23 @@ feature (`--features=cimd`) together with a realm client policy.
 
 ## What was measured
 
-Eight CIMD documents published by their vendors, fetched live, against Keycloak **26.7.0 and 26.8.0** (each version
-separately, every valid run):
+Eight CIMD documents published by their vendors, fetched live and **sent to Keycloak by the lab itself** (not by the
+client programs), against Keycloak **26.7.0 and 26.8.0** (each version separately, every valid run). The last column is a
+separate measurement: what the vendor's **client program** did against an MCP server behind Keycloak 26.8.0 with
+anonymous registration locked ([real-clients/](real-clients/)).
 
-| Identity | Published at | Stock Keycloak | Refused on (server log) | With the `lenient-cimd` executor |
+| Published document | Stock Keycloak | Refused on (server log) | Document with the `lenient-cimd` executor | The client program itself |
 |---|---|---|---|---|
-| OpenAI (ChatGPT) | `chatgpt.com/oauth/client.json` | refused | `token_endpoint_auth_methods_supported` | accepted |
-| OpenAI (Codex) | `chatgpt.com/oauth/codex/client.json` | refused | `token_endpoint_auth_methods_supported` | accepted |
-| OpenAI (Atlas) | `chatgpt.com/oauth/atlas/client.json` | refused | `token_endpoint_auth_methods_supported` | accepted |
-| opencode | `opencode.ai/oauth/opencode/client.json` | refused | `token_endpoint_auth_methods_supported` | accepted |
-| goose | `goose-docs.ai/oauth/client-metadata.json` | refused | `code_challenge_methods_supported` | accepted with `[::1]` in the allowlist |
-| VS Code | `vscode.dev/oauth/client-metadata.json` | accepted | — | accepted |
-| GitHub Copilot CLI | `github.com/copilot/cli/client-metadata.json` | accepted | — | accepted |
-| Hermes Agent | `nousresearch.github.io/hermes-agent/docs/oauth/client-metadata.json` | accepted | — | accepted |
+| OpenAI (ChatGPT) `chatgpt.com/oauth/client.json` | refused | `token_endpoint_auth_methods_supported` | accepted | not tested (hosted service) |
+| OpenAI (Codex) `chatgpt.com/oauth/codex/client.json` | refused | `token_endpoint_auth_methods_supported` | accepted | Codex CLI 0.153.4: refused on stock; token with the executor, after its own scope fallback |
+| OpenAI (Atlas) `chatgpt.com/oauth/atlas/client.json` | refused | `token_endpoint_auth_methods_supported` | accepted | not tested (hosted service) |
+| opencode `opencode.ai/oauth/opencode/client.json` | refused | `token_endpoint_auth_methods_supported` | accepted | **does not use this document**: opencode 1.2.27 and 1.19.3 register through dynamic registration (403 when locked), with either executor |
+| goose `goose-docs.ai/oauth/client-metadata.json` | refused | `code_challenge_methods_supported` | accepted with `[::1]` in the allowlist | goose 1.55.0: refused on stock; token and a tool call with the executor |
+| VS Code `vscode.dev/oauth/client-metadata.json` | accepted | — | accepted | not measured (did not contact the server) |
+| GitHub Copilot CLI `github.com/copilot/cli/client-metadata.json` | accepted | — | accepted | Copilot CLI 1.0.98: token, tools listed (both) |
+| Hermes Agent `nousresearch.github.io/hermes-agent/docs/oauth/client-metadata.json` | accepted | — | accepted | Hermes 0.22.2: token, tools listed (both) |
 
-- **Five of the eight identities we tested** (three vendors: OpenAI, opencode, goose) are refused by stock Keycloak, each
+- **Five of the eight published documents we tested** (three vendors: OpenAI, opencode, goose) are refused by stock Keycloak, each
   on one of **two extra properties**. RFC 7591 §2, which the CIMD draft builds on, says an authorization server MUST
   ignore client metadata it does not understand.
 - **The fetch succeeded; the parse failed.** The caller is shown `Client Metadata fetch failed`; the server log for the
