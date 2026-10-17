@@ -1,0 +1,1 @@
+[{"type":"CODE_TO_TOKEN","clientId":"https://github.com/copilot/cli/client-metadata.json","error":null,"n":1},{"type":"LOGIN","clientId":"https://github.com/copilot/cli/client-metadata.json","error":null,"n":1}]

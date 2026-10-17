@@ -1,0 +1,6 @@
+{
+  "servers": {
+    "cimd-stock": { "type": "http", "url": "http://127.0.0.1:19000/mcp" },
+    "cimd-ext":   { "type": "http", "url": "http://127.0.0.1:19001/mcp" }
+  }
+}

@@ -1,0 +1,2 @@
+[{"type":"CODE_TO_TOKEN","clientId":"https://nousresearch.github.io/hermes-agent/docs/oauth/client-metadata.json","error":null,"n":1},{"type":"LOGIN","clientId":"https://nousresearch.github.io/hermes-agent/docs/oauth/client-metadata.json","error":null,"n":1}]
+["https://nousresearch.github.io/hermes-agent/docs/oauth/client-metadata.json"]

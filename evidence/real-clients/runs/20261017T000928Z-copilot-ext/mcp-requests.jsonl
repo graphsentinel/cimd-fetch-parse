@@ -1,0 +1,19 @@
+{"utc": "2026-10-17T00:09:41.135137+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "copilot-cli", "bearer": true, "valid": false, "rpc": "ping"}
+{"utc": "2026-10-17T00:10:12.066452+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "copilot-cli", "bearer": false, "rpc": "server/discover"}
+{"utc": "2026-10-17T00:10:12.076498+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "copilot-cli"}
+{"utc": "2026-10-17T00:10:12.403407+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "copilot-cli", "bearer": true, "valid": false, "rpc": "server/discover"}
+{"utc": "2026-10-17T00:11:09.819459+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "", "bearer": false, "rpc": "server/discover"}
+{"utc": "2026-10-17T00:11:09.825035+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "copilot/1.0.98 (linux v24.20.0) term/unknown"}
+{"utc": "2026-10-17T00:11:28.168689+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "copilot-cli", "bearer": true, "valid": false, "rpc": "server/discover"}
+{"utc": "2026-10-17T00:11:28.170865+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "copilot-cli"}
+{"utc": "2026-10-17T00:11:28.334969+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "copilot-cli", "bearer": true, "valid": true, "rpc": "server/discover", "user": "alice"}
+{"utc": "2026-10-17T00:11:28.340925+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "copilot-cli", "bearer": true, "valid": true, "rpc": "initialize", "user": "alice"}
+{"utc": "2026-10-17T00:11:28.387599+00:00", "method": "POST", "path": "/mcp", "status": 202, "ua": "copilot-cli", "bearer": true, "valid": true, "rpc": "notifications/initialized", "user": "alice"}
+{"utc": "2026-10-17T00:11:28.410949+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "copilot-cli", "bearer": true, "valid": true, "rpc": "tools/list", "user": "alice"}
+{"utc": "2026-10-17T00:11:53.393894+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "copilot-cli", "bearer": true, "valid": true, "rpc": "ping", "user": "alice"}
+{"utc": "2026-10-17T00:12:43.399007+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "copilot-cli", "bearer": true, "valid": true, "rpc": "ping", "user": "alice"}
+{"utc": "2026-10-17T00:13:04.720210+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "copilot-cli", "bearer": true, "valid": true, "rpc": "tools/list", "user": "alice"}
+{"utc": "2026-10-17T00:14:48.400791+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "copilot-cli", "bearer": true, "valid": true, "rpc": "ping", "user": "alice"}
+{"utc": "2026-10-17T00:15:38.397112+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "copilot-cli", "bearer": true, "valid": true, "rpc": "ping", "user": "alice"}
+{"utc": "2026-10-17T00:17:18.399365+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "copilot-cli", "bearer": true, "valid": false, "rpc": "ping"}
+{"utc": "2026-10-17T00:20:38.394041+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "copilot-cli", "bearer": true, "valid": false, "rpc": "ping"}

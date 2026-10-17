@@ -1,0 +1,8 @@
+{"utc": "2026-10-16T23:27:08.153824+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "python-httpx2/2.12.0", "bearer": false, "rpc": "initialize"}
+{"utc": "2026-10-16T23:27:08.155555+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "Hermes-Agent/0.22.2"}
+{"utc": "2026-10-16T23:27:09.170311+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "python-httpx2/2.12.0", "bearer": true, "valid": true, "rpc": "initialize", "user": "alice"}
+{"utc": "2026-10-16T23:27:09.182551+00:00", "method": "POST", "path": "/mcp", "status": 202, "ua": "python-httpx2/2.12.0", "bearer": true, "valid": true, "rpc": "notifications/initialized", "user": "alice"}
+{"utc": "2026-10-16T23:27:09.213619+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "python-httpx2/2.12.0", "bearer": true, "valid": true, "rpc": "tools/list", "user": "alice"}
+{"utc": "2026-10-16T23:27:12.881937+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "python-httpx2/2.12.0", "bearer": true, "valid": true, "rpc": "initialize", "user": "alice"}
+{"utc": "2026-10-16T23:27:12.890460+00:00", "method": "POST", "path": "/mcp", "status": 202, "ua": "python-httpx2/2.12.0", "bearer": true, "valid": true, "rpc": "notifications/initialized", "user": "alice"}
+{"utc": "2026-10-16T23:27:12.898256+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "python-httpx2/2.12.0", "bearer": true, "valid": true, "rpc": "tools/list", "user": "alice"}

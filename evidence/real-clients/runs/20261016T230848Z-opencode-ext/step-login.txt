@@ -1,0 +1,13 @@
+Performing one time database migration, may take a few minutes...
+sqlite-migration:done
+Database migration complete.
+[0m
+┌  MCP OAuth Authentication
+[?25l│
+◒  Starting OAuth flow[999D[J■  Authentication failed
+[?25h│
+■  Policy 'Trusted Hosts' rejected request to client-registration service. Details: Host not trusted.
+│
+└  Done
+
+exit=0

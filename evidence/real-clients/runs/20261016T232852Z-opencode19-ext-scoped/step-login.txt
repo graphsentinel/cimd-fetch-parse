@@ -1,0 +1,10 @@
+[0m
+┌  MCP OAuth Authentication
+[?25l│
+◒  Starting OAuth flow[999D[J◐  Starting OAuth flow[999D[J◓  Starting OAuth flow[999D[J◑  Starting OAuth flow[999D[J◒  Starting OAuth flow[999D[J■  Authentication failed
+[?25h│
+■  Policy 'Allowed Client Scopes' rejected request to client-registration service. Details: Not permitted to use specified clientScope
+│
+└  Done
+
+exit=0

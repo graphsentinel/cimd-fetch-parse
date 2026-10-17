@@ -1,0 +1,16 @@
+# Every LOGIN_ERROR in realm agent-trial on stock Keycloak, paired with the executor line of the same thread just before it
+# (podman logs cimdlab-stock-26.8.0 since 2026-10-16T22:00Z; event time, cause-line time, cause)
+2026-10-16 22:15:28 22:15:28,378 clientId=null Unrecognized field "token_endpoint_auth_methods_supported"
+2026-10-16 22:20:38 22:20:38,482 clientId=null SocketTimeoutException
+2026-10-16 22:30:48 22:30:48,491 clientId=null Unrecognized field "token_endpoint_auth_methods_supported"
+2026-10-16 22:33:18 22:33:18,526 clientId=null Unrecognized field "token_endpoint_auth_methods_supported"
+2026-10-16 22:35:22 22:35:22,243 clientId=null Unrecognized field "token_endpoint_auth_methods_supported"
+2026-10-16 22:37:52 22:37:52,317 clientId=null Unrecognized field "token_endpoint_auth_methods_supported"
+2026-10-16 22:51:24 22:51:24,506 clientId=null Unrecognized field "token_endpoint_auth_methods_supported"
+2026-10-16 22:53:54 22:53:54,535 clientId=null Unrecognized field "token_endpoint_auth_methods_supported"
+2026-10-16 22:58:26 22:58:26,187 clientId=null Unrecognized field "token_endpoint_auth_methods_supported"
+2026-10-16 23:00:56 23:00:56,306 clientId=null Unrecognized field "token_endpoint_auth_methods_supported"
+2026-10-16 23:03:09 23:03:09,078 clientId=null Unrecognized field "token_endpoint_auth_methods_supported"
+2026-10-16 23:05:39 23:05:39,124 clientId=null Unrecognized field "token_endpoint_auth_methods_supported"
+2026-10-16 23:09:19 23:09:19,710 clientId=null Unrecognized field "code_challenge_methods_supported"
+2026-10-16 23:14:41 23:14:41,961 clientId=null Unrecognized field "code_challenge_methods_supported"

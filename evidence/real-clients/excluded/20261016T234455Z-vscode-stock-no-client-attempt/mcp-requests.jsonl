@@ -1,0 +1,9 @@
+{"utc": "2026-10-16T23:45:14.050921+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"}
+{"utc": "2026-10-16T23:45:14.196074+00:00", "method": "GET", "path": "/favicon.ico", "status": 404, "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"}
+{"utc": "2026-10-16T23:47:43.673827+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "curl/8.18.0"}
+{"utc": "2026-10-16T23:48:10.551789+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"}
+{"utc": "2026-10-16T23:48:12.086961+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"}
+{"utc": "2026-10-16T23:48:13.209400+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"}
+{"utc": "2026-10-16T23:48:24.141937+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.140.0 Chrome/150.0.7871.250 Electron/43.7.3 Safari/537.36"}
+{"utc": "2026-10-16T23:48:24.288985+00:00", "method": "GET", "path": "/favicon.ico", "status": 404, "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.140.0 Chrome/150.0.7871.250 Electron/43.7.3 Safari/537.36"}
+{"utc": "2026-10-16T23:48:25.337667+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.140.0 Chrome/150.0.7871.250 Electron/43.7.3 Safari/537.36"}

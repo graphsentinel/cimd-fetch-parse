@@ -58,8 +58,9 @@ and an uninstall. Keycloak 26.8.1, measured separately (3 rounds, 30/30), gives 
   negative controls are bounded coverage, not proof that nothing else changed.
 - Eight tested documents are not an ecosystem ratio. The checks stop at the login page (acceptance =
   the authorization request is answered with the login page, not an error; check 10 also reads the stored clients); token
-  issuance is outside them. A separate run with real agent clients measured it; its harness and evidence are not yet
-  published here. Authenticated dynamic registration was not tested.
+  issuance is outside them. A separate run with real agent clients measured it:
+  [real-clients/](real-clients/) (Copilot CLI and Hermes get tokens on stock Keycloak; Codex CLI and goose only with the
+  extension; released opencode registers through dynamic registration instead of CIMD). Authenticated dynamic registration was not tested.
   Whether a client switches to CIMD because a server advertises it (check 07: every realm we tested advertises it) was not
   measured.
 - The vendor documents are fetched live and may change; the results are dated by their run.
@@ -142,6 +143,7 @@ the check saw it), `metadata-requests.jsonl`, `stdout.txt`, `manifest.json`
 ## Layout
 
 ```
+real-clients/  real agent clients against an MCP server behind the lab Keycloak (see its README)
 checks/        the ten checks (bash)            spi/          lenient-cimd executor, logging-cimd provider (Java)
 scripts/       platform.sh, lab.sh, common.sh, recording-proxy.py, metadata-server.py, summary.py, tls.sh, …
 lab/           expected.tsv (the expected value of every recorded field)

@@ -12,6 +12,9 @@ password was generated inside each VM and is not in any file here.
 | [e2e-multipass/20261013T175201Z-ubuntu24.04](e2e-multipass/20261013T175201Z-ubuntu24.04/) | clean Ubuntu 24.04 VM, committed tree `a904d4e` | 26.7.0, 26.8.0 | RUNS=1 (20), then reinstall + RUNS=1 (20), uninstall | 20/20 and 20/20 PASS, Problems: 0 |
 | [host-26.8.1](host-26.8.1/) | Ubuntu 26.04.1 host, commit `c46e9a9` | 26.8.1 | RUNS=3 (30), `PORT_BASE=18300` | 30/30 PASS, Problems: 0; same expected values as 26.7.0 / 26.8.0 |
 
+Real agent clients (Codex CLI, goose, Hermes, opencode, Copilot CLI) against an MCP server behind the lab Keycloak:
+[real-clients/](real-clients/) (23 counted attempts, 13 not counted with reasons).
+
 `c46e9a9` → `a904d4e` changed only the lab's ownership checks (`scripts/lab.sh`, the premise line of check 03, `tls.sh`,
 `platform.sh`), not what any check requests or how it decides.
 

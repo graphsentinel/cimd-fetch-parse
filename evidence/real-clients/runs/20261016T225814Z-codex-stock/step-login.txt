@@ -1,0 +1,4 @@
+Authorize `trial` by opening this URL in your browser:
+http://127.0.0.2:18100/realms/agent-trial/protocol/openid-connect/auth?response_type=code&client_id=https%3A%2F%2Fchatgpt.com%2Foauth%2Fcodex%2Fclient.json&state=9ysVB8_z8PGw_D-u0IxbOg&code_challenge=dQwWQY3gbUB9Tsq17dbKPwN8aOV2NfMDFC8yM1D5AWM&code_challenge_method=S256&redirect_uri=http%3A%2F%2F127.0.0.1%3A42321%2Fcallback&scope=openid+profile+organization+roles+service_account+phone+microprofile-jwt+acr+web-origins+address+basic+email+offline_access&resource=http%3A%2F%2F127.0.0.1%3A19000%2Fmcp
+
+exit=124

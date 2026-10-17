@@ -1,0 +1,6 @@
+#!/bin/sh
+# fake browser: hand the URL to the driver in the background (the client must not wait on it)
+D=$(cd "$(dirname "$0")/.." && pwd)
+printf '%s\n' "$1" >> "${TRIAL_OUT:-.}/opened-urls.txt"
+nohup python3 "$D/browser-driver.py" "$1" >> "${TRIAL_OUT:-.}/driver.log" 2>&1 &
+exit 0

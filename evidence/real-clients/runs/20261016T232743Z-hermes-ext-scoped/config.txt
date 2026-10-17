@@ -1,0 +1,3 @@
+CHALLENGE_SCOPE=openid
+warm 400
+warm 400

@@ -1,0 +1,2 @@
+{"utc": "2026-10-16T23:14:41.807730+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "goose/1.55.0", "bearer": false, "rpc": "server/discover"}
+{"utc": "2026-10-16T23:14:41.823243+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": ""}

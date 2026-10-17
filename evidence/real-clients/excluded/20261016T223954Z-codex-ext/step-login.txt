@@ -1,0 +1,8 @@
+Authorize `trial` by opening this URL in your browser:
+http://127.0.0.2:18101/realms/agent-trial/protocol/openid-connect/auth?response_type=code&client_id=https%3A%2F%2Fchatgpt.com%2Foauth%2Fcodex%2Fclient.json&state=SOI8PTZ6qgH7LDliQwk3yA&code_challenge=KL50KJsqHj5D01g4pAULVgbm3pMJRIwCdodpBC4MV8U&code_challenge_method=S256&redirect_uri=http%3A%2F%2F127.0.0.1%3A32843%2Fcallback&scope=openid+offline_access+email+acr+profile+basic+organization+service_account+phone+web-origins+address+roles+microprofile-jwt&resource=http%3A%2F%2F127.0.0.1%3A19001%2Fmcp
+
+OAuth provider rejected discovered scopes. Retrying without scopes…
+Authorize `trial` by opening this URL in your browser:
+http://127.0.0.2:18101/realms/agent-trial/protocol/openid-connect/auth?response_type=code&client_id=https%3A%2F%2Fchatgpt.com%2Foauth%2Fcodex%2Fclient.json&state=8bMDcYv2-K8GpjEhs1QIJA&code_challenge=mOKUN-1yoVj0V4yiGEUAilfHt54K3VRbazwF2_8ea-g&code_challenge_method=S256&redirect_uri=http%3A%2F%2F127.0.0.1%3A40951%2Fcallback&scope=openid+offline_access&resource=http%3A%2F%2F127.0.0.1%3A19001%2Fmcp
+
+exit=124

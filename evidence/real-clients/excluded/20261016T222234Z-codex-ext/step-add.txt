@@ -1,0 +1,9 @@
+Added global MCP server 'trial'.
+Detected OAuth support. Starting OAuth flow…
+Authorize `trial` by opening this URL in your browser:
+http://127.0.0.2:18101/realms/agent-trial/protocol/openid-connect/auth?response_type=code&client_id=https%3A%2F%2Fchatgpt.com%2Foauth%2Fcodex%2Fclient.json&state=4fnPJpBI6bS0dCHIgAXY8g&code_challenge=U-hyjmAXJ1kvJB6U-mV3omMhBd_8TjiuWP89fiwsgQg&code_challenge_method=S256&redirect_uri=http%3A%2F%2F127.0.0.1%3A42635%2Fcallback&scope=openid+basic+offline_access+address+phone+service_account+email+web-origins+acr+roles+microprofile-jwt+organization+profile&resource=http%3A%2F%2F127.0.0.1%3A19001%2Fmcp
+
+Error: timed out waiting for OAuth callback
+
+Caused by:
+    deadline has elapsed

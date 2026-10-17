@@ -1,0 +1,4 @@
+
+  Starting OAuth flow for 'trial'...
+  ✗ Authentication failed: MCP server 'trial' requires HTTP transport but mcp.client.streamable_http is not available. Upgrade the mcp package to get HTTP support.
+exit=0

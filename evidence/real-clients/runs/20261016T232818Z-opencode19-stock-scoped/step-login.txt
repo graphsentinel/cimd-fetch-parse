@@ -1,0 +1,10 @@
+[0m
+┌  MCP OAuth Authentication
+[?25l│
+◒  Starting OAuth flow[999D[J◐  Starting OAuth flow[999D[J◓  Starting OAuth flow[999D[J◑  Starting OAuth flow[999D[J■  Authentication failed
+[?25h│
+■  Policy 'Trusted Hosts' rejected request to client-registration service. Details: Host not trusted.
+│
+└  Done
+
+exit=0

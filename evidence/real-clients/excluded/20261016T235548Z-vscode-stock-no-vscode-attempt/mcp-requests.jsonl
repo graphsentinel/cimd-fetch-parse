@@ -1,0 +1,11 @@
+{"utc": "2026-10-16T23:57:46.947641+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "curl/8.18.0", "bearer": false, "rpc": null}
+{"utc": "2026-10-17T00:04:27.632041+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "copilot-cli", "bearer": false, "rpc": "server/discover"}
+{"utc": "2026-10-17T00:04:27.639061+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "copilot-cli"}
+{"utc": "2026-10-17T00:04:28.200595+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "copilot-cli", "bearer": false, "rpc": "server/discover"}
+{"utc": "2026-10-17T00:04:28.202114+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "copilot-cli"}
+{"utc": "2026-10-17T00:05:09.366411+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "copilot-cli", "bearer": true, "valid": true, "rpc": "server/discover", "user": "alice"}
+{"utc": "2026-10-17T00:05:09.371578+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "copilot-cli", "bearer": true, "valid": true, "rpc": "initialize", "user": "alice"}
+{"utc": "2026-10-17T00:05:09.418422+00:00", "method": "POST", "path": "/mcp", "status": 202, "ua": "copilot-cli", "bearer": true, "valid": true, "rpc": "notifications/initialized", "user": "alice"}
+{"utc": "2026-10-17T00:05:09.451435+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "copilot-cli", "bearer": true, "valid": true, "rpc": "tools/list", "user": "alice"}
+{"utc": "2026-10-17T00:05:39.432920+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "copilot-cli", "bearer": true, "valid": true, "rpc": "ping", "user": "alice"}
+{"utc": "2026-10-17T00:06:38.432299+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "copilot-cli", "bearer": true, "valid": true, "rpc": "ping", "user": "alice"}

@@ -1,0 +1,12 @@
+
+    __( O)>  ● new session · ollama qwen3.6:35b
+   \____)    20261016_1 · /home/mustafa-dayioglu/Projects/Proposals/kubecon-eu-2027/keycloakcon/cimd-fetch-parse/private/agent-trial/runs/20261016T232352Z-goose-ext-scoped
+     L L     goose is ready
+If the browser did not open, authorize 127_0_0_1_19001_mcp at:
+  http://127.0.0.2:18101/realms/agent-trial/protocol/openid-connect/auth?response_type=code&client_id=https%3A%2F%2Fgoose-docs.ai%2Foauth%2Fclient-metadata.json&state=Z_PK2x6XFNkaOEAzGyFyqA&code_challenge=qsMUQZzpY3gl0G9WsUvPlA9nn-zHXXIiXA2FK8O02H8&code_challenge_method=S256&redirect_uri=http%3A%2F%2F127.0.0.1%3A33129%2Foauth_callback&scope=openid+offline_access&resource=http%3A%2F%2F127.0.0.1%3A19001%2Fmcp
+
+  ────────────────────────────────────────
+  ▸ whoami 127_0_0_1_19001_mcp
+
+user=alice
+exit=0

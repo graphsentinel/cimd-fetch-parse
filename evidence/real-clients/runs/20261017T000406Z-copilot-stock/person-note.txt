@@ -1,0 +1,1 @@
+copilot cli: authorization successful, tools listed; vscode never connected

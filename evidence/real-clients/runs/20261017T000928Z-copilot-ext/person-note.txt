@@ -1,0 +1,1 @@
+copilot ext: authenticated; first reconnect used cached old token (401), then connected, whoami listed
