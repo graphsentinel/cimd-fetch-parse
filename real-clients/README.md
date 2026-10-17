@@ -34,11 +34,11 @@ loopback callback. It never records codes or tokens.
 | opencode 1.2.27 and 1.19.3 (latest release) | **dynamic registration**, not CIMD | 403 (registration locked) | 403 |
 | VS Code 1.140 | — | not measured: the client never contacted the server | — |
 
-Each automated cell ran twice (with and without a `scope` hint in the 401 challenge), with the same outcome. Raw records,
+Each automated client/server combination was run with and without a `scope` hint in the MCP server's 401 challenge (does the client follow the server's hint?), with the same outcome both times. Raw records,
 the full table and the attempts that were not counted, with reasons: [evidence/real-clients/](../evidence/real-clients/).
 
 Notes:
-- opencode's CIMD support exists on its main branch, not in a released version as of 1.19.3.
+- As of 17 Oct 2026, opencode's CIMD support exists on its main branch, not in a released version (1.19.3 is the latest).
 - Keycloak shows a consent screen to CIMD clients; the user approves it.
 - Codex's `mcp login` ends after the token; whether Codex then uses it was not measured.
 

@@ -39,7 +39,7 @@ case $C in
     ( cd $CLIENTS/hermes-src && timeout 90 $HP mcp test trial ) > step-list.txt 2>&1 < /dev/null;;
   goose)
     export GOOSE_PROVIDER=ollama GOOSE_MODEL=qwen3.6:35b OLLAMA_HOST=http://localhost:11434 GOOSE_DISABLE_KEYRING=1
-    timeout 300 $CLIENTS/goose-dl/goose run --no-session -t "Call the whoami tool once and print exactly what it returns." \
+    timeout ${GOOSE_TIMEOUT:-300} $CLIENTS/goose-dl/goose run --no-session -t "Call the whoami tool once and print exactly what it returns." \
       --with-streamable-http-extension http://127.0.0.1:$MP/mcp > step-login.txt 2>&1 < /dev/null; echo "exit=$?" >> step-login.txt;;
 esac
 sleep 2; kill $MPID 2>/dev/null
