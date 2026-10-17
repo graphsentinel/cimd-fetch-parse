@@ -56,8 +56,10 @@ and an uninstall. Keycloak 26.8.1, measured separately (3 rounds, 30/30), gives 
   the measured matrix, the single-variable cause, the extension point and a bounded regression set.
 - **Not a fix.** `lenient-cimd` is an experiment on an internal SPI; remove it when upstream resolves the issue. Its five
   negative controls are bounded coverage, not proof that nothing else changed.
-- Eight tested documents are not an ecosystem ratio. Token issuance / a completed login was not measured (acceptance =
-  the authorization request is answered with the login page, not an error; check 10 also reads the stored clients). Authenticated dynamic registration was not tested.
+- Eight tested documents are not an ecosystem ratio. The checks stop at the login page (acceptance =
+  the authorization request is answered with the login page, not an error; check 10 also reads the stored clients); token
+  issuance is outside them. A separate run with real agent clients measured it; its harness and evidence are not yet
+  published here. Authenticated dynamic registration was not tested.
   Whether a client switches to CIMD because a server advertises it (check 07: every realm we tested advertises it) was not
   measured.
 - The vendor documents are fetched live and may change; the results are dated by their run.
