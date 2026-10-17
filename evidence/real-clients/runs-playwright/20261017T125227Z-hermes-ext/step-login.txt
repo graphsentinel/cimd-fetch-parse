@@ -1,0 +1,14 @@
+
+  Starting OAuth flow for 'trial'...
+
+  MCP OAuth: authorization required.
+  Open this URL in your browser:
+
+    http://127.0.0.2:18101/realms/agent-trial/protocol/openid-connect/auth?response_type=code&client_id=https%3A%2F%2Fnousresearch.github.io%2Fhermes-agent%2Fdocs%2Foauth%2Fclient-metadata.json&redirect_uri=http%3A%2F%2F127.0.0.1%3A27892%2Fcallback&state=EYzGo_csDzzid66SOP8KZL4h2FqH6nhXIUjSzNnxl7k&code_challenge=KFasqO9HICPjvZnjWAhBFOvYJ3woFwtn3IR7oChdeu0&code_challenge_method=S256&resource=http%3A%2F%2F127.0.0.1%3A19001%2Fmcp&scope=openid+offline_access&prompt=consent
+
+  (Browser opened automatically.)
+
+
+  Or paste the redirect URL here (or the ``?code=...&state=...`` portion) and press Enter. Type ``skip`` + Enter to continue without this server:
+  ✓ Authenticated — 1 tool(s) available
+exit=0

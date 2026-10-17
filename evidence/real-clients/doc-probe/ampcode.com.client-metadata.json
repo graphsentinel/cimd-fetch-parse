@@ -1,0 +1,1 @@
+{"client_id":"https://ampcode.com/oauth/client-metadata.json","client_name":"Amp","client_uri":"https://ampcode.com","redirect_uris":["https://ampcode.com/auth/mcp/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none"}

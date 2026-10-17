@@ -1,0 +1,7 @@
+{"utc": "2026-10-17T12:51:08.863907+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "goose/1.55.0", "bearer": false, "rpc": "server/discover"}
+{"utc": "2026-10-17T12:51:08.888595+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": ""}
+{"utc": "2026-10-17T12:51:11.165644+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "goose/1.55.0", "bearer": true, "valid": true, "rpc": "server/discover", "user": "alice"}
+{"utc": "2026-10-17T12:51:11.170500+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "goose/1.55.0", "bearer": true, "valid": true, "rpc": "initialize", "user": "alice"}
+{"utc": "2026-10-17T12:51:11.216253+00:00", "method": "POST", "path": "/mcp", "status": 202, "ua": "goose/1.55.0", "bearer": true, "valid": true, "rpc": "notifications/initialized", "user": "alice"}
+{"utc": "2026-10-17T12:51:11.355911+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "goose/1.55.0", "bearer": true, "valid": true, "rpc": "tools/list", "user": "alice"}
+{"utc": "2026-10-17T12:51:30.532701+00:00", "method": "POST", "path": "/mcp", "status": 200, "ua": "goose/1.55.0", "bearer": true, "valid": true, "rpc": "tools/call", "user": "alice"}

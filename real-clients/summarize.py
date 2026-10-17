@@ -30,8 +30,11 @@ for d in sys.argv[1:] or sorted(glob.glob(os.path.join(RUNS, "2026*"))):
     auth = [urllib.parse.parse_qs(urllib.parse.urlparse(x["path"]).query) for x in kq
             if x["method"] == "GET" and "/realms/agent-trial/protocol/openid-connect/auth" in x["path"]]
     cids = sorted({a.get("client_id", ["?"])[0] for a in auth})
-    dcr = [x["status"] for x in kq if x["method"] == "POST" and "clients-registrations" in x["path"]]
+    # this attempt's realm only (another trial may run next to it on the same Keycloak, e.g. vscode-run.sh)
+    dcr = [x["status"] for x in kq if x["method"] == "POST" and "/realms/agent-trial/clients-registrations" in x["path"]]
     br = jl(os.path.join(d, "browser.jsonl"))
+    if not cids:  # no proxy record (AS_HOST=localhost): the client_id the client put in its authorization URL
+        cids = sorted({b.get("client_id") for b in br if b.get("client_id")})
     outcomes = [b["result"] + (f"({b.get('callback_error_description') or b['steps'][0].get('message') or ''})"[:70]
                                if b["result"] != "code_delivered_to_client" else "") for b in br]
     ev = []

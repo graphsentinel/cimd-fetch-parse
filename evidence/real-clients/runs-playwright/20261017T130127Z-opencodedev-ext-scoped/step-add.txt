@@ -1,0 +1,1 @@
+MCP server "trial" added to /home/mustafa-dayioglu/Projects/Proposals/kubecon-eu-2027/keycloakcon/cimd-fetch-parse/lab/.runtime/real-clients/runs/20261017T130127Z-opencodedev-ext-scoped/home/.config/opencode/opencode.json

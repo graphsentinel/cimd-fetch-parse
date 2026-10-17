@@ -1,0 +1,10 @@
+Added global MCP server 'trial'.
+Detected OAuth support. Starting OAuth flow…
+Authorize `trial` by opening this URL in your browser:
+http://127.0.0.2:18101/realms/agent-trial/protocol/openid-connect/auth?response_type=code&client_id=https%3A%2F%2Fchatgpt.com%2Foauth%2Fcodex%2Fclient.json&state=9VVauk7rUn2c8cSpMTU6uA&code_challenge=AQ5bBhrSWqsnl2TmhZUvHSWOTrKuvnIkC_78KdNUrCY&code_challenge_method=S256&redirect_uri=http%3A%2F%2F127.0.0.1%3A40465%2Fcallback&scope=openid+service_account+offline_access+email+roles+organization+acr+address+profile+web-origins+phone+basic+microprofile-jwt&resource=http%3A%2F%2F127.0.0.1%3A19001%2Fmcp
+
+OAuth provider rejected discovered scopes. Retrying without scopes…
+Authorize `trial` by opening this URL in your browser:
+http://127.0.0.2:18101/realms/agent-trial/protocol/openid-connect/auth?response_type=code&client_id=https%3A%2F%2Fchatgpt.com%2Foauth%2Fcodex%2Fclient.json&state=FR-lVNOlaht2FEgd1RrmDw&code_challenge=d_EZW_FAd5ZdaV6twG2d5TlEw07AHEsLEBxHe9DEa_0&code_challenge_method=S256&redirect_uri=http%3A%2F%2F127.0.0.1%3A37091%2Fcallback&scope=openid+offline_access&resource=http%3A%2F%2F127.0.0.1%3A19001%2Fmcp
+
+Successfully logged in.

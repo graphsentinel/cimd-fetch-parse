@@ -1,0 +1,16 @@
+2026-10-17 15:49:13.634 [info] Extension host with pid 1973350 started
+2026-10-17 15:49:13.634 [info] Skipping acquiring lock for /home/mustafa-dayioglu/Projects/Proposals/kubecon-eu-2027/keycloakcon/cimd-fetch-parse/lab/.runtime/real-clients/runs/20261017T124902Z-vscode-stock/profile/User/workspaceStorage/19ceef3778fb7d76b9fe2920f2fe2af0.
+2026-10-17 15:49:14.068 [info] ExtensionService#_doActivateExtension vscode.github-authentication, startup: false, activationEvent: 'onAuthenticationRequest:github'
+2026-10-17 15:49:14.087 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2026-10-17 15:49:14.177 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2026-10-17 15:49:14.189 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2026-10-17 15:49:14.239 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2026-10-17 15:49:14.351 [info] Eager extensions activated
+2026-10-17 15:49:14.351 [info] [node-compile-cache] extension-host: packaged cache inactive (status: disabled, configured: /usr/share/code/resources/app/node-compile-cache/extension-host, active: none)
+2026-10-17 15:49:14.416 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2026-10-17 15:49:14.418 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-10-17 15:49:14.431 [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-10-17 15:49:14.436 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-10-17 15:49:14.538 [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-10-17 15:52:02.204 [info] Extension host terminating: received terminate message from renderer
+2026-10-17 15:52:02.222 [info] Extension host with pid 1973350 exiting with code 0

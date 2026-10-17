@@ -1,0 +1,2 @@
+[{"type":"CODE_TO_TOKEN","clientId":"https://goose-docs.ai/oauth/client-metadata.json","error":null,"n":1},{"type":"LOGIN","clientId":"https://goose-docs.ai/oauth/client-metadata.json","error":null,"n":1}]
+["https://goose-docs.ai/oauth/client-metadata.json"]

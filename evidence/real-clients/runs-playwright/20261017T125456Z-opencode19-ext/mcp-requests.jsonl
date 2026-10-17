@@ -1,0 +1,8 @@
+{"utc": "2026-10-17T12:54:59.544672+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "opencode/1.19.3", "bearer": false, "rpc": "initialize"}
+{"utc": "2026-10-17T12:54:59.550907+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "opencode/1.19.3"}
+{"utc": "2026-10-17T12:54:59.701241+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "opencode/1.19.3"}
+{"utc": "2026-10-17T12:54:59.839720+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "opencode/1.19.3", "bearer": false, "rpc": "initialize"}
+{"utc": "2026-10-17T12:54:59.856865+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "opencode/1.19.3"}
+{"utc": "2026-10-17T12:55:01.439906+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "opencode/1.19.3", "bearer": false, "rpc": "initialize"}
+{"utc": "2026-10-17T12:55:01.442075+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "opencode/1.19.3"}
+{"utc": "2026-10-17T12:55:01.580153+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "opencode/1.19.3"}

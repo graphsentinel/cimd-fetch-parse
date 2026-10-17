@@ -1,0 +1,15 @@
+{"utc": "2026-10-17T12:39:39.178208+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T12:39:39.182203+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T12:39:39.224379+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T12:39:39.278285+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T12:39:39.319614+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T12:39:39.361918+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T12:42:09.216453+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T12:42:09.216984+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T12:42:09.259118+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T12:42:09.321801+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T12:42:09.364129+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T12:42:09.405884+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T12:44:09.255923+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T12:44:09.256398+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "codex-mcp-client/0.153.4"}
+{"utc": "2026-10-17T12:44:09.298172+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "codex-mcp-client/0.153.4"}

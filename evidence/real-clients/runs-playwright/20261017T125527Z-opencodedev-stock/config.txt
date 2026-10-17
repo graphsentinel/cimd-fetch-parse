@@ -1,0 +1,5 @@
+CHALLENGE_SCOPE=
+BROWSER_DRIVER=playwright
+AS_HOST=localhost
+warm 400
+warm 400

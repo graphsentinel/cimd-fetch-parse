@@ -1,0 +1,19 @@
+12:52:51 screenshot 00-started.png
+12:52:54 palette rows ["MCP: List Servers","MCP: Browse MCP Servers similar commands","Help: List Signal Announcements","Help: List Signal Sounds","Accounts: Manage Trusted MCP Servers For Account"]
+12:52:56 servers ["Add ServerAdd a new server configuration","cimd-stockStopped workspace/.vscode/mcp.json"]
+12:52:56 screenshot 01-servers.png
+12:52:58 actions ["Start Server Status","Show Configuration","Show Output","Configure Model AccessSet the models the server can use via MCP sampling Sampling","Browse Resources Resources"]
+12:52:59 screenshot 02-actions.png
+12:53:12 accounts menu ["Manage Dynamic Authentication Providers...","Sign in to ChatGPT","Backup and Sync Settings...","Sign in to use GitHub Copilot...","Turn on Cloud Changes...","Turn on Remote Tunnel Access...","Manage Extension Account Preferences...","Manage Language Model Access..."]
+12:53:12 screenshot 03-accounts-1.png
+12:53:31 accounts menu ["Manage Dynamic Authentication Providers...","Sign in to ChatGPT","Backup and Sync Settings...","Sign in to use GitHub Copilot...","Turn on Cloud Changes...","Turn on Remote Tunnel Access...","Manage Extension Account Preferences...","Manage Language Model Access..."]
+12:53:31 screenshot 04-accounts-2.png
+12:53:37 server actions ["Stop Server Status","Restart Server","Show Configuration","Show Output","Configure Model AccessSet the models the server can use via MCP sampling Sampling","Browse Resources Resources"]
+12:53:37 screenshot 05-server-actions.png
+12:53:52 accounts menu ["Manage Dynamic Authentication Providers...","Sign in to ChatGPT","Backup and Sync Settings...","Sign in to use GitHub Copilot...","Turn on Cloud Changes...","Turn on Remote Tunnel Access...","Manage Extension Account Preferences...","Manage Language Model Access..."]
+12:53:52 screenshot 06-accounts-3.png
+12:55:34 screenshot 07-end.png
+12:55:38 servers at end ["Add ServerAdd a new server configuration","cimd-stockRunning workspace/.vscode/mcp.json"]
+12:55:38 screenshot 08-servers-end.png
+12:55:38 dialogs answered ["server-action:none"]
+exit=0

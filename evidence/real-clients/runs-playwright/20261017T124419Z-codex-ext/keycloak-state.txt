@@ -1,0 +1,2 @@
+[{"type":"CODE_TO_TOKEN","clientId":"https://chatgpt.com/oauth/codex/client.json","error":null,"n":1},{"type":"LOGIN","clientId":"https://chatgpt.com/oauth/codex/client.json","error":null,"n":1},{"type":"LOGIN_ERROR","clientId":"https://chatgpt.com/oauth/codex/client.json","error":"invalid_request","n":1}]
+["https://chatgpt.com/oauth/codex/client.json"]

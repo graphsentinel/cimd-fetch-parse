@@ -1,0 +1,5 @@
+Added global MCP server 'trial'.
+Detected OAuth support. Starting OAuth flow…
+Authorize `trial` by opening this URL in your browser:
+http://127.0.0.2:18100/realms/agent-trial/protocol/openid-connect/auth?response_type=code&client_id=https%3A%2F%2Fchatgpt.com%2Foauth%2Fcodex%2Fclient.json&state=EGQQmaAOtWiOYw8XU9d2EA&code_challenge=c-DTmP1uQ6BCdVenmn08XrLTKsYirNBOC6-f38wEB-g&code_challenge_method=S256&redirect_uri=http%3A%2F%2F127.0.0.1%3A45905%2Fcallback&scope=openid+acr+email+phone+profile+organization+offline_access+service_account+microprofile-jwt+address+roles+web-origins+basic&resource=http%3A%2F%2F127.0.0.1%3A19000%2Fmcp
+

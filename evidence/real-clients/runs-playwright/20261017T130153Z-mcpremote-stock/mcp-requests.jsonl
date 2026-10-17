@@ -1,0 +1,5 @@
+{"utc": "2026-10-17T13:02:08.799485+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "undici"}
+{"utc": "2026-10-17T13:02:08.815137+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "node"}
+{"utc": "2026-10-17T13:02:08.827998+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "node"}
+{"utc": "2026-10-17T13:02:08.859116+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "undici", "bearer": false, "rpc": "initialize"}
+{"utc": "2026-10-17T13:02:08.869013+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "undici"}

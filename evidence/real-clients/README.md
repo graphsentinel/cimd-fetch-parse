@@ -1,5 +1,10 @@
 # Evidence: real clients (16–17 Oct 2026, Keycloak 26.8.0)
 
+Two sets. **Playwright set (17 Oct, the one the README tables use)**: `runs-playwright/`, `RESULTS-playwright.md`,
+`stock-refusal-causes-playwright.txt`, `excluded-playwright/`, plus `doc-probe/`. **First set (16–17 Oct, scripted
+stand-in browser, Copilot CLI by a person)**: `runs/`, `RESULTS.md`, `stock-refusal-causes.txt`, `excluded/`. Same
+outcomes where both ran.
+
 Records of [real-clients/](../../real-clients/) as produced. The per-attempt HOME directories (the clients' own
 configuration and the tokens they stored) are not included; nothing here holds a token. The proxy records keep
 authorization codes in redirect URLs: single-use, already exchanged, issued by a lab realm that no longer exists.
@@ -29,3 +34,25 @@ logged by an earlier session's server that still held the port; its `NOTE.md` ex
 | `…-hermes-*-mcp-extra-missing` (three) | Hermes was installed without its `mcp` extra ("streamable HTTP is not available"); the setup, not Hermes, failed; rerun and counted |
 | `20261016T232610Z-hermes-ext-scoped` | valid (token, tools listed), superseded by the rerun of all four Hermes cells |
 | `20261016T234455Z-vscode-stock-no-client-attempt`, `20261016T235548Z-vscode-stock-no-vscode-attempt` | VS Code never contacted the MCP server; the second directory's MCP log holds the Copilot CLI requests used by the counted copilot stock attempt |
+
+## Playwright set (17 Oct): 28 counted attempts (`runs-playwright/`)
+
+codex, goose, hermes, opencode 1.2.27, opencode 1.19.3 (`opencode19`), opencode `dev` a49f179 (`opencodedev`, unreleased)
+and mcp-remote 0.15.1 (`mcpremote`): each on stock and ext, with and without the scope hint. Logins by a real headless
+Chromium (Playwright 1.56.1); `screens/` holds a screenshot of every step. `opencodedev` reached Keycloak on `localhost`
+(it refuses a plain-http token endpoint elsewhere), so its attempts have no proxy record: the client_id comes from the
+browser record, the outcome from Keycloak's events and log and the MCP server's log.
+`stock-refusal-causes-playwright.txt`: all 8 stock refusals (codex 4, goose 2, opencode `dev` 2), each with its own
+`Unrecognized field` line.
+
+`excluded-playwright/`: two VS Code 1.140 attempts (own realm `vscode-trial`, isolated profile and HOME, virtual display):
+VS Code reached the MCP server and read Keycloak's metadata, but its sign-in did not start under automation (no token,
+no MCP call with a token). VS Code is therefore "not measured end to end". Not published: earlier VS Code attempts made
+before VS Code's profile and HOME were isolated (their screenshots show the operator's own accounts), and the attempts
+made while the harness for opencode `dev` and mcp-remote was being built (URL capture, `localhost`); the same cells were
+then run cleanly in the matrix above.
+
+## `doc-probe/`
+
+The Zed and Amp CIMD documents (copies as fetched on 17 Oct) sent to Keycloak by the lab itself, like checks 01/05,
+stock and ext; Zed also with its real loopback redirect carrying a port. All accepted (`results.tsv`).

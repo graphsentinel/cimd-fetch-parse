@@ -1,0 +1,9 @@
+
+  Testing 'trial'...
+  Transport: HTTP → http://127.0.0.1:19001/mcp
+  Auth: OAuth 2.0
+  ✓ Connected (872ms)
+  ✓ Tools discovered: 1
+
+    whoami                               Returns the authenticated user
+

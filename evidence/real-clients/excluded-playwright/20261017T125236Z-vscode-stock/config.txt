@@ -1,0 +1,1 @@
+BROWSER_DRIVER=playwright; realm=vscode-trial; issuer=http://localhost:18100/realms/vscode-trial; VS Code 1.140.0

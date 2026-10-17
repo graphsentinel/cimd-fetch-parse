@@ -1,0 +1,5 @@
+{"utc": "2026-10-17T12:54:11.710997+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "opencode/1.2.27", "bearer": false, "rpc": "initialize"}
+{"utc": "2026-10-17T12:54:11.712699+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "opencode/1.2.27"}
+{"utc": "2026-10-17T12:54:13.240011+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "opencode/1.2.27", "bearer": false, "rpc": "initialize"}
+{"utc": "2026-10-17T12:54:13.243293+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "opencode/1.2.27"}
+{"utc": "2026-10-17T12:54:13.346476+00:00", "method": "GET", "path": "/mcp", "status": 405, "ua": "opencode/1.2.27"}

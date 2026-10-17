@@ -1,0 +1,9 @@
+# stock refusals in realm agent-trial: event time (UTC) | attempt | client_id the client sent | server's reason
+12:34:58 | 20261017T123455Z-codex-stock | https%3A%2F%2Fchatgpt.com%2Foauth%2Fcodex%2Fclient.json | Unrecognized field "token_endpoint_auth_methods_supported"
+12:37:28 | 20261017T123455Z-codex-stock | https%3A%2F%2Fchatgpt.com%2Foauth%2Fcodex%2Fclient.json | Unrecognized field "token_endpoint_auth_methods_supported"
+12:39:40 | 20261017T123937Z-codex-stock-scoped | https%3A%2F%2Fchatgpt.com%2Foauth%2Fcodex%2Fclient.json | Unrecognized field "token_endpoint_auth_methods_supported"
+12:42:10 | 20261017T123937Z-codex-stock-scoped | https%3A%2F%2Fchatgpt.com%2Foauth%2Fcodex%2Fclient.json | Unrecognized field "token_endpoint_auth_methods_supported"
+12:44:54 | 20261017T124451Z-goose-stock | https%3A%2F%2Fgoose-docs.ai%2Foauth%2Fclient-metadata.json | Unrecognized field "code_challenge_methods_supported"
+12:47:37 | 20261017T124733Z-goose-stock-scoped | https%3A%2F%2Fgoose-docs.ai%2Foauth%2Fclient-metadata.json | Unrecognized field "code_challenge_methods_supported"
+12:55:37 | 20261017T125527Z-opencodedev-stock | https://opencode.ai/oauth/opencode/client.json | Unrecognized field "token_endpoint_auth_methods_supported"
+12:58:25 | 20261017T125816Z-opencodedev-stock-scoped | https://opencode.ai/oauth/opencode/client.json | Unrecognized field "token_endpoint_auth_methods_supported"

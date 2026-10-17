@@ -1,0 +1,18 @@
+Script started on 2026-10-17 16:01:06+03:00 [COMMAND="bun run --cwd /home/mustafa-dayioglu/Projects/Proposals/kubecon-eu-2027/keycloakcon/cimd-fetch-parse/private/agent-trial/clients/opencode-dev/packages/cli src/index.ts mcp auth trial" <not executed on terminal>]
+[90m┌[39m  Authenticate an MCP server
+[?25l[90m│[39m
+[1D[0K[32m◇[39m  Authorization started
+[?25h[90m│[39m
+[34m●[39m  Authorize trial in your browser. This window will close automatically.
+[90m│[39m
+[34m●[39m  http://localhost:18101/realms/agent-trial/protocol/openid-connect/auth?response_type=code&client_id=https%3A%2F%2Fopencode.ai%2Foauth%2Fopencode%2Fclient.json&code_challenge=3nSBbTaR4mG6gN9LVrwZ0PScWBCRU_NsyuDL3ZczTKE&code_challenge_method=S256&redirect_uri=http%3A%2F%2F127.0.0.1%3A44129%2Fcallback&state=FHLnvxW4pcFWL1xVjYFctEFkY7y19p15FwsXjapvUMk&scope=openid+offline_access&resource=http%3A%2F%2F127.0.0.1%3A19001%2Fmcp
+[90m│[39m
+[32m◇[39m  Waiting for authorization...
+[90m│[39m
+[32m◆[39m  Connected to trial
+[90m│[39m
+[90m└[39m  Done
+
+
+Script done on 2026-10-17 16:01:14+03:00 [COMMAND_EXIT_CODE="0"]
+exit=0

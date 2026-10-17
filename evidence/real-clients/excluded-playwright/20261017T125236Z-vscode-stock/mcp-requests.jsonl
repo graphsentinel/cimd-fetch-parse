@@ -1,0 +1,2 @@
+{"utc": "2026-10-17T12:53:00.654758+00:00", "method": "POST", "path": "/mcp", "status": 401, "ua": "Visual Studio Code/1.140.0", "bearer": false, "rpc": "initialize"}
+{"utc": "2026-10-17T12:53:00.671904+00:00", "method": "GET", "path": "/.well-known/oauth-protected-resource/mcp", "status": 200, "ua": "Visual Studio Code/1.140.0"}

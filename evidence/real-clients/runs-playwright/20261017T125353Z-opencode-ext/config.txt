@@ -1,0 +1,5 @@
+CHALLENGE_SCOPE=
+BROWSER_DRIVER=playwright
+AS_HOST=127.0.0.2
+warm 200
+warm 200

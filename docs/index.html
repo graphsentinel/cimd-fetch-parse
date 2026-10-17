@@ -54,19 +54,37 @@ extension can act, and what a narrow change costs in validation coverage. Ten ch
 <p class="cap">Keycloak 26.8.0. Acts 1–3: the lab sends each vendor's published client_id. Act 4: a real agent (goose 1.55.0) against an MCP server behind Keycloak; login by a scripted browser stand-in. Bottom pane: filtered lines from the Keycloak server log.</p>
 
 <h2>What was measured</h2>
-<p>Eight CIMD documents published by their vendors, fetched live and <strong>sent to Keycloak by the lab itself</strong> (not by the client programs), against Keycloak 26.7.0 and 26.8.0 (26.8.1 measured separately, same results). The last column is a separate measurement: what the vendor's client program did against an MCP server behind Keycloak 26.8.0 with anonymous registration locked (<a href="https://github.com/graphsentinel/cimd-fetch-parse/tree/main/real-clients">real-clients/</a>).</p>
+<p>Eight CIMD documents published by their vendors, fetched live and <strong>sent to Keycloak by the lab itself</strong> (not by the client programs), against Keycloak 26.7.0 and 26.8.0 (26.8.1 measured separately, same results).</p>
 <div class="table"><table>
-<thead><tr><th>Published document</th><th>Stock Keycloak</th><th>Refused on (server log)</th><th>Document with <code>lenient-cimd</code></th><th>The client program itself</th></tr></thead>
+<thead><tr><th>Published document</th><th>Stock Keycloak</th><th>Refused on (server log)</th><th>Document with <code>lenient-cimd</code></th><th>Its client program</th></tr></thead>
 <tbody>
 <tr><td>OpenAI (ChatGPT)</td><td class="r">refused</td><td><code>token_endpoint_auth_methods_supported</code></td><td class="a">accepted</td><td>not tested (hosted service)</td></tr>
-<tr><td>OpenAI (Codex)</td><td class="r">refused</td><td><code>token_endpoint_auth_methods_supported</code></td><td class="a">accepted</td><td>Codex CLI: refused on stock; token with the executor, after its own scope fallback</td></tr>
+<tr><td>OpenAI (Codex)</td><td class="r">refused</td><td><code>token_endpoint_auth_methods_supported</code></td><td class="a">accepted</td><td>Codex CLI uses it</td></tr>
 <tr><td>OpenAI (Atlas)</td><td class="r">refused</td><td><code>token_endpoint_auth_methods_supported</code></td><td class="a">accepted</td><td>not tested (hosted service)</td></tr>
-<tr><td>opencode</td><td class="r">refused</td><td><code>token_endpoint_auth_methods_supported</code></td><td class="a">accepted</td><td class="r">does not use this document: releases 1.2.27 and 1.19.3 use dynamic registration (403 when locked)</td></tr>
-<tr><td>goose</td><td class="r">refused</td><td><code>code_challenge_methods_supported</code></td><td class="a">accepted with <code>[::1]</code> in the allowlist</td><td>goose: refused on stock; token and a tool call with the executor</td></tr>
-<tr><td>VS Code</td><td class="a">accepted</td><td>—</td><td class="a">accepted</td><td>not measured</td></tr>
-<tr><td>GitHub Copilot CLI</td><td class="a">accepted</td><td>—</td><td class="a">accepted</td><td>token, tools listed</td></tr>
-<tr><td>Hermes Agent</td><td class="a">accepted</td><td>—</td><td class="a">accepted</td><td>token, tools listed</td></tr>
+<tr><td>opencode</td><td class="r">refused</td><td><code>token_endpoint_auth_methods_supported</code></td><td class="a">accepted</td><td>the tested releases (1.2.27, 1.19.3) do not use it; the development build does</td></tr>
+<tr><td>goose</td><td class="r">refused</td><td><code>code_challenge_methods_supported</code></td><td class="a">accepted with <code>[::1]</code> in the allowlist</td><td>goose uses it</td></tr>
+<tr><td>VS Code</td><td class="a">accepted</td><td>—</td><td class="a">accepted</td><td>not measured end to end</td></tr>
+<tr><td>GitHub Copilot CLI</td><td class="a">accepted</td><td>—</td><td class="a">accepted</td><td>Copilot CLI uses it</td></tr>
+<tr><td>Hermes Agent</td><td class="a">accepted</td><td>—</td><td class="a">accepted</td><td>Hermes uses it</td></tr>
 </tbody></table></div>
+<p>Two more published documents found later, Zed's and Amp's, carry no extra property and are accepted by stock Keycloak.</p>
+
+<h2>What the client programs do</h2>
+<p>Each program pointed at an OAuth-protected MCP server behind Keycloak 26.8.0 with <strong>anonymous registration locked</strong>; logins by a real headless Chromium (Playwright), Copilot CLI by a person; outcomes from Keycloak's events and server log and the MCP server's log (<a href="https://github.com/graphsentinel/cimd-fetch-parse/tree/main/real-clients">real-clients/</a>).</p>
+<div class="table"><table>
+<thead><tr><th>Client program</th><th>How it registers</th><th>Stock Keycloak</th><th>With <code>lenient-cimd</code></th></tr></thead>
+<tbody>
+<tr><td>GitHub Copilot CLI 1.0.98</td><td>its CIMD URL</td><td class="a">token, tools listed</td><td class="a">token, tools listed</td></tr>
+<tr><td>Hermes Agent 0.22.2</td><td>its CIMD URL</td><td class="a">token, tools listed</td><td class="a">token, tools listed</td></tr>
+<tr><td>goose 1.55.0</td><td>its CIMD URL</td><td class="r">refused at parse time (<code>code_challenge_methods_supported</code>)</td><td class="a">token, a tool called</td></tr>
+<tr><td>Codex CLI 0.153.4</td><td>its CIMD URL</td><td class="r">refused at parse time (<code>token_endpoint_auth_methods_supported</code>)</td><td class="a">token, after its own scope fallback; no authenticated MCP call measured</td></tr>
+<tr><td>opencode development build (default branch <code>dev</code>, unreleased)</td><td>its CIMD URL</td><td class="r">refused at parse time (<code>token_endpoint_auth_methods_supported</code>)</td><td class="a">token, tools listed</td></tr>
+<tr><td>opencode 1.2.27</td><td>dynamic registration</td><td class="r">403, registration locked</td><td class="r">403</td></tr>
+<tr><td>opencode 1.19.3 (latest release)</td><td>dynamic registration</td><td class="r">403, registration locked</td><td class="r">403</td></tr>
+<tr><td>mcp-remote 0.15.1 (defaults)</td><td>dynamic registration</td><td class="r">403, registration locked</td><td class="r">403</td></tr>
+<tr><td>VS Code 1.140</td><td>—</td><td>reached the MCP server and found Keycloak; sign-in did not start under automation: not measured</td><td>—</td></tr>
+</tbody></table></div>
+<p>With registration locked, <strong>6 of the 8 client builds measured end to end obtained no token from stock Keycloak</strong> (VS Code, not measured end to end, is not counted). Three were refused at parse time on their published CIMD document; all three obtained a token once unknown properties were tolerated, and goose and the opencode development build also made authenticated MCP calls. The other three (two opencode releases, mcp-remote) used dynamic registration, which locked registration refuses with either executor.</p>
 
 <ul>
   <li><strong>The fetch succeeded; the parse failed.</strong> The caller sees <code>Client Metadata fetch failed</code>; the server
@@ -90,7 +108,7 @@ extension can act, and what a narrow change costs in validation coverage. Ten ch
   measured matrix, the single-variable cause, the extension point and a bounded regression set.</li>
   <li><strong>Not a fix.</strong> <code>lenient-cimd</code> is an experiment on an internal SPI, to be removed when upstream
   resolves the issue. Its negative controls are bounded coverage, not proof that nothing else changed.</li>
-  <li>Eight documents are not an ecosystem ratio. The checks stop at the login page; token issuance was measured in a separate run with real agent clients (<a href="https://github.com/graphsentinel/cimd-fetch-parse/tree/main/real-clients">real-clients/</a>): Copilot CLI and Hermes get tokens on stock Keycloak, Codex CLI and goose only with the extension.</li>
+  <li>Eight documents in the checks (plus two probed later) and eight client builds are not an ecosystem ratio. The lab checks stop at the login page; token issuance is measured for the programs above. ChatGPT and Atlas are hosted (not testable locally); VS Code was not measured end to end.</li>
 </ul>
 
 <h2>Run it</h2>

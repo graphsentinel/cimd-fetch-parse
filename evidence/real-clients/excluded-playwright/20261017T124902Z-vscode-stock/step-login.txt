@@ -1,0 +1,17 @@
+12:49:16 screenshot 00-started.png
+12:49:19 palette rows ["MCP: List Servers","MCP: Browse MCP Servers similar commands","Help: List Signal Announcements","Help: List Signal Sounds","Accounts: Manage Trusted MCP Servers For Account"]
+12:49:20 servers ["Add ServerAdd a new server configuration","cimd-stockStopped workspace/.vscode/mcp.json"]
+12:49:20 screenshot 01-servers.png
+12:49:23 actions ["Start Server Status","Show Configuration","Show Output","Configure Model AccessSet the models the server can use via MCP sampling Sampling","Browse Resources Resources"]
+12:49:23 screenshot 02-actions.png
+12:49:36 accounts menu ["Manage Dynamic Authentication Providers...","Sign in to ChatGPT","Backup and Sync Settings...","Sign in to use GitHub Copilot...","Turn on Cloud Changes...","Turn on Remote Tunnel Access...","Manage Extension Account Preferences...","Manage Language Model Access..."]
+12:49:36 screenshot 03-accounts-1.png
+12:49:55 accounts menu ["Manage Dynamic Authentication Providers...","Sign in to ChatGPT","Backup and Sync Settings...","Sign in to use GitHub Copilot...","Turn on Cloud Changes...","Turn on Remote Tunnel Access...","Manage Extension Account Preferences...","Manage Language Model Access..."]
+12:49:55 screenshot 04-accounts-2.png
+12:50:16 accounts menu ["Manage Dynamic Authentication Providers...","Sign in to ChatGPT","Backup and Sync Settings...","Sign in to use GitHub Copilot...","Turn on Cloud Changes...","Turn on Remote Tunnel Access...","Manage Extension Account Preferences...","Manage Language Model Access..."]
+12:50:16 screenshot 05-accounts-3.png
+12:51:57 screenshot 06-end.png
+12:52:01 servers at end ["Add ServerAdd a new server configuration","cimd-stockRunning workspace/.vscode/mcp.json"]
+12:52:02 screenshot 07-servers-end.png
+12:52:02 dialogs answered []
+exit=0

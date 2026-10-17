@@ -1,0 +1,55 @@
+[2088883] Using callback port derived from the server URL: 28693
+[2088883] Discovering OAuth server configuration...
+[2088883] Discovered authorization server: http://127.0.0.2:18100/realms/agent-trial
+[2088883] [2088883] Connecting to remote server: http://127.0.0.1:19000/mcp
+[2088883] Using transport strategy: http-first
+[2088883] Connection error: RegistrationRejectedError: Dynamic Client Registration rejected (HTTP 403): {"error":"insufficient_scope","error_description":"Policy 'Trusted Hosts' rejected request to client-registration service. Details: Host not trusted."}
+    at registerClient (file:///home/mustafa-dayioglu/Projects/Proposals/kubecon-eu-2027/keycloakcon/cimd-fetch-parse/lab/.runtime/real-clients/runs/20261017T130153Z-mcpremote-stock/home/.npm/_npx/8d15d4caa834b7f0/node_modules/mcp-remote/dist/chunk-KJCT2FXL.js:28409:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async authInternal (file:///home/mustafa-dayioglu/Projects/Proposals/kubecon-eu-2027/keycloakcon/cimd-fetch-parse/lab/.runtime/real-clients/runs/20261017T130153Z-mcpremote-stock/home/.npm/_npx/8d15d4caa834b7f0/node_modules/mcp-remote/dist/chunk-KJCT2FXL.js:28047:12)
+    at async auth (file:///home/mustafa-dayioglu/Projects/Proposals/kubecon-eu-2027/keycloakcon/cimd-fetch-parse/lab/.runtime/real-clients/runs/20261017T130153Z-mcpremote-stock/home/.npm/_npx/8d15d4caa834b7f0/node_modules/mcp-remote/dist/chunk-KJCT2FXL.js:27940:12)
+    at async handleOAuthUnauthorized (file:///home/mustafa-dayioglu/Projects/Proposals/kubecon-eu-2027/keycloakcon/cimd-fetch-parse/lab/.runtime/real-clients/runs/20261017T130153Z-mcpremote-stock/home/.npm/_npx/8d15d4caa834b7f0/node_modules/mcp-remote/dist/chunk-KJCT2FXL.js:27758:7)
+    at async StreamableHTTPClientTransport._send (file:///home/mustafa-dayioglu/Projects/Proposals/kubecon-eu-2027/keycloakcon/cimd-fetch-parse/lab/.runtime/real-clients/runs/20261017T130153Z-mcpremote-stock/home/.npm/_npx/8d15d4caa834b7f0/node_modules/mcp-remote/dist/chunk-KJCT2FXL.js:31421:15) {
+  status: 403,
+  body: `{"error":"insufficient_scope","error_description":"Policy 'Trusted Hosts' rejected request to client-registration service. Details: Host not trusted."}`,
+  submittedMetadata: {
+    redirect_uris: [ 'http://localhost:28693/oauth/callback' ],
+    token_endpoint_auth_method: 'none',
+    grant_types: [ 'authorization_code', 'refresh_token' ],
+    response_types: [ 'code' ],
+    client_name: 'MCP CLI Proxy',
+    client_uri: 'https://github.com/modelcontextprotocol/mcp-cli',
+    software_id: '2e6dc280-f3c3-4e01-99a7-8181dbd1d23d',
+    software_version: '0.15.1',
+    scope: 'openid offline_access',
+    application_type: 'native'
+  }
+}
+[2088883] Fatal error: RegistrationRejectedError: Dynamic Client Registration rejected (HTTP 403): {"error":"insufficient_scope","error_description":"Policy 'Trusted Hosts' rejected request to client-registration service. Details: Host not trusted."}
+    at registerClient (file:///home/mustafa-dayioglu/Projects/Proposals/kubecon-eu-2027/keycloakcon/cimd-fetch-parse/lab/.runtime/real-clients/runs/20261017T130153Z-mcpremote-stock/home/.npm/_npx/8d15d4caa834b7f0/node_modules/mcp-remote/dist/chunk-KJCT2FXL.js:28409:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async authInternal (file:///home/mustafa-dayioglu/Projects/Proposals/kubecon-eu-2027/keycloakcon/cimd-fetch-parse/lab/.runtime/real-clients/runs/20261017T130153Z-mcpremote-stock/home/.npm/_npx/8d15d4caa834b7f0/node_modules/mcp-remote/dist/chunk-KJCT2FXL.js:28047:12)
+    at async auth (file:///home/mustafa-dayioglu/Projects/Proposals/kubecon-eu-2027/keycloakcon/cimd-fetch-parse/lab/.runtime/real-clients/runs/20261017T130153Z-mcpremote-stock/home/.npm/_npx/8d15d4caa834b7f0/node_modules/mcp-remote/dist/chunk-KJCT2FXL.js:27940:12)
+    at async handleOAuthUnauthorized (file:///home/mustafa-dayioglu/Projects/Proposals/kubecon-eu-2027/keycloakcon/cimd-fetch-parse/lab/.runtime/real-clients/runs/20261017T130153Z-mcpremote-stock/home/.npm/_npx/8d15d4caa834b7f0/node_modules/mcp-remote/dist/chunk-KJCT2FXL.js:27758:7)
+    at async StreamableHTTPClientTransport._send (file:///home/mustafa-dayioglu/Projects/Proposals/kubecon-eu-2027/keycloakcon/cimd-fetch-parse/lab/.runtime/real-clients/runs/20261017T130153Z-mcpremote-stock/home/.npm/_npx/8d15d4caa834b7f0/node_modules/mcp-remote/dist/chunk-KJCT2FXL.js:31421:15) {
+  status: 403,
+  body: `{"error":"insufficient_scope","error_description":"Policy 'Trusted Hosts' rejected request to client-registration service. Details: Host not trusted."}`,
+  submittedMetadata: {
+    redirect_uris: [ 'http://localhost:28693/oauth/callback' ],
+    token_endpoint_auth_method: 'none',
+    grant_types: [ 'authorization_code', 'refresh_token' ],
+    response_types: [ 'code' ],
+    client_name: 'MCP CLI Proxy',
+    client_uri: 'https://github.com/modelcontextprotocol/mcp-cli',
+    software_id: '2e6dc280-f3c3-4e01-99a7-8181dbd1d23d',
+    software_version: '0.15.1',
+    scope: 'openid offline_access',
+    application_type: 'native'
+  }
+}
+npm notice
+npm notice New major version of npm available! 10.9.4 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+exit=1

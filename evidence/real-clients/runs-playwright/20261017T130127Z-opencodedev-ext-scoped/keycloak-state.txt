@@ -1,0 +1,2 @@
+[{"type":"CODE_TO_TOKEN","clientId":"https://opencode.ai/oauth/opencode/client.json","error":null,"n":1},{"type":"LOGIN","clientId":"https://opencode.ai/oauth/opencode/client.json","error":null,"n":1}]
+["https://opencode.ai/oauth/opencode/client.json"]

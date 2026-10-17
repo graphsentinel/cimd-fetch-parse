@@ -1,0 +1,2 @@
+{"utc": "2026-10-17T12:55:40.658679+00:00", "run": null, "port": 18100, "method": "POST", "path": "/realms/master/protocol/openid-connect/token", "status": 200, "location": null, "body": "<token response, not recorded>"}
+{"utc": "2026-10-17T12:55:40.753371+00:00", "run": null, "port": 18100, "method": "GET", "path": "/admin/realms/vscode-trial/events?max=200", "status": 200, "location": null, "body": "[]"}

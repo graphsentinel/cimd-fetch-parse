@@ -1,0 +1,9 @@
+[0m
+┌  MCP Servers
+│
+●  ✗ trial [90mfailed
+│      SSE error: Non-200 status code (405)
+│      [90mhttp://127.0.0.1:19001/mcp
+│
+└  1 server(s)
+

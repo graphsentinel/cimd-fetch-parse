@@ -10,21 +10,46 @@ feature (`--features=cimd`) together with a realm client policy.
 
 ## What was measured
 
-Eight CIMD documents published by their vendors, fetched live and **sent to Keycloak by the lab itself** (not by the
-client programs), against Keycloak **26.7.0 and 26.8.0** (each version separately, every valid run). The last column is a
-separate measurement: what the vendor's **client program** did against an MCP server behind Keycloak 26.8.0 with
-anonymous registration locked ([real-clients/](real-clients/)).
+Eight CIMD documents published by their vendors (the ten checks), fetched live and **sent to Keycloak by the lab itself**
+(not by the client programs), against Keycloak **26.7.0 and 26.8.0** (each version separately, every run the summary
+counted; see [evidence/](evidence/)). What the client
+programs themselves do is a separate measurement, in the next table.
 
-| Published document | Stock Keycloak | Refused on (server log) | Document with the `lenient-cimd` executor | The client program itself |
+| Published document | Stock Keycloak | Refused on (server log) | Document with the `lenient-cimd` executor | Its client program (next table) |
 |---|---|---|---|---|
 | OpenAI (ChatGPT) `chatgpt.com/oauth/client.json` | refused | `token_endpoint_auth_methods_supported` | accepted | not tested (hosted service) |
-| OpenAI (Codex) `chatgpt.com/oauth/codex/client.json` | refused | `token_endpoint_auth_methods_supported` | accepted | Codex CLI 0.153.4: refused on stock; token with the executor, after its own scope fallback |
+| OpenAI (Codex) `chatgpt.com/oauth/codex/client.json` | refused | `token_endpoint_auth_methods_supported` | accepted | Codex CLI uses it |
 | OpenAI (Atlas) `chatgpt.com/oauth/atlas/client.json` | refused | `token_endpoint_auth_methods_supported` | accepted | not tested (hosted service) |
-| opencode `opencode.ai/oauth/opencode/client.json` | refused | `token_endpoint_auth_methods_supported` | accepted | **does not use this document**: opencode 1.2.27 and 1.19.3 register through dynamic registration (403 when locked), with either executor |
-| goose `goose-docs.ai/oauth/client-metadata.json` | refused | `code_challenge_methods_supported` | accepted with `[::1]` in the allowlist | goose 1.55.0: refused on stock; token and a tool call with the executor |
-| VS Code `vscode.dev/oauth/client-metadata.json` | accepted | — | accepted | not measured (did not contact the server) |
-| GitHub Copilot CLI `github.com/copilot/cli/client-metadata.json` | accepted | — | accepted | Copilot CLI 1.0.98: token, tools listed (both) |
-| Hermes Agent `nousresearch.github.io/hermes-agent/docs/oauth/client-metadata.json` | accepted | — | accepted | Hermes 0.22.2: token, tools listed (both) |
+| opencode `opencode.ai/oauth/opencode/client.json` | refused | `token_endpoint_auth_methods_supported` | accepted | the tested releases (1.2.27, 1.19.3) do **not** use it; the development build does |
+| goose `goose-docs.ai/oauth/client-metadata.json` | refused | `code_challenge_methods_supported` | accepted with `[::1]` in the allowlist | goose uses it |
+| VS Code `vscode.dev/oauth/client-metadata.json` | accepted | — | accepted | not measured end to end |
+| GitHub Copilot CLI `github.com/copilot/cli/client-metadata.json` | accepted | — | accepted | Copilot CLI uses it |
+| Hermes Agent `nousresearch.github.io/hermes-agent/docs/oauth/client-metadata.json` | accepted | — | accepted | Hermes uses it |
+
+Two more published documents found later, Zed's and Amp's, carry no extra property and are accepted by stock Keycloak
+([evidence/real-clients/doc-probe/](evidence/real-clients/doc-probe/); Zed's real loopback redirect with a port too).
+
+**The client programs** ([real-clients/](real-clients/)): each program pointed at an OAuth-protected MCP server behind
+Keycloak 26.8.0 with **anonymous registration locked**; logins by a real headless Chromium (Playwright), Copilot CLI by a
+person; outcomes from Keycloak's events and server log and the MCP server's log, not from the programs' messages.
+
+| Client program | How it registers | Stock Keycloak | With the `lenient-cimd` executor |
+|---|---|---|---|
+| GitHub Copilot CLI 1.0.98 | its CIMD URL | token, tools listed | token, tools listed |
+| Hermes Agent 0.22.2 | its CIMD URL | token, tools listed | token, tools listed |
+| goose 1.55.0 | its CIMD URL | **refused at parse time** (`code_challenge_methods_supported`) | token, a tool called |
+| Codex CLI 0.153.4 | its CIMD URL | **refused at parse time** (`token_endpoint_auth_methods_supported`) | token, after its own fallback from Keycloak's full scope list to fewer scopes; no authenticated MCP call measured |
+| opencode development build (default branch `dev`, a49f179, unreleased; CIMD is in no release as of 17 Oct 2026) | its CIMD URL | **refused at parse time** (`token_endpoint_auth_methods_supported`) | token, tools listed |
+| opencode 1.2.27 | dynamic registration | 403, registration locked | 403 |
+| opencode 1.19.3 (latest release) | dynamic registration | 403, registration locked | 403 |
+| mcp-remote 0.15.1 (its defaults) | dynamic registration | 403, registration locked | 403 |
+| VS Code 1.140 | — | reached the MCP server and found Keycloak; its sign-in did not start under automation: not measured | — |
+
+With registration locked, **6 of the 8 client builds measured end to end obtained no token from stock Keycloak**
+(VS Code, not measured end to end, is not counted). Three were refused at parse time on their published CIMD document;
+all three obtained a token once unknown properties were tolerated, and goose and the opencode development build also made
+authenticated MCP calls. The other three (two opencode releases, mcp-remote) used dynamic registration, which locked
+registration refuses with either executor.
 
 - **Five of the eight published documents we tested** (three vendors: OpenAI, opencode, goose) are refused by stock Keycloak, each
   on one of **two extra properties**. RFC 7591 §2, which the CIMD draft builds on, says an authorization server MUST
@@ -54,17 +79,16 @@ and an uninstall. Keycloak 26.8.1, measured separately (3 rounds, 30/30), gives 
   by ryotaro612 (the ChatGPT document, closed), [keycloak#51236](https://github.com/keycloak/keycloak/issues/51236) and
   the open PR [keycloak#51235](https://github.com/keycloak/keycloak/pull/51235) by achetronic, and
   [keycloak#53363](https://github.com/keycloak/keycloak/issues/53363) by antoniocasagrande-airia for the registration
-  endpoint (status as of 2026-10-13). This repository adds
+  endpoint (status as of 2026-10-17). This repository adds
   the measured matrix, the single-variable cause, the extension point and a bounded regression set.
 - **Not a fix.** `lenient-cimd` is an experiment on an internal SPI; remove it when upstream resolves the issue. Its five
   negative controls are bounded coverage, not proof that nothing else changed.
-- Eight tested documents are not an ecosystem ratio. The checks stop at the login page (acceptance =
+- Eight documents in the checks (plus two probed later) are not an ecosystem ratio. The checks stop at the login page (acceptance =
   the authorization request is answered with the login page, not an error; check 10 also reads the stored clients); token
-  issuance is outside them. A separate run with real agent clients measured it:
-  [real-clients/](real-clients/) (Copilot CLI and Hermes get tokens on stock Keycloak; Codex CLI and goose only with the
-  extension; released opencode registers through dynamic registration instead of CIMD). Authenticated dynamic registration was not tested.
-  Whether a client switches to CIMD because a server advertises it (check 07: every realm we tested advertises it) was not
-  measured.
+  issuance is outside them; the client-program table measures it for eight client builds. Those are not an ecosystem
+  ratio either: ChatGPT and Atlas are hosted (not testable against a local server), VS Code was not measured
+  end to end, other clients were not tried. Authenticated dynamic registration was not tested. Which registration a
+  client chooses was measured only for those builds (check 07: every realm we tested advertises CIMD).
 - The vendor documents are fetched live and may change; the results are dated by their run.
 
 ## Quickstart (Ubuntu 24.04 or 26.04)

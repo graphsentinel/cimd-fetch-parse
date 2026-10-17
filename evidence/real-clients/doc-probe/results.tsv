@@ -1,0 +1,7 @@
+utc	keycloak	document	client_id	http	outcome
+2026-10-17T13:04:25.346176832Z	stock	zed	https://zed.dev/oauth/client-metadata.json	200	accepted -
+2026-10-17T13:04:27.586525504Z	stock	zed (port)	https://zed.dev/oauth/client-metadata.json	200	accepted -
+2026-10-17T13:04:30.098854402Z	stock	amp	https://ampcode.com/oauth/client-metadata.json	200	accepted -
+2026-10-17T13:04:35.320565929Z	ext	zed	https://zed.dev/oauth/client-metadata.json	200	accepted -
+2026-10-17T13:04:37.607363113Z	ext	zed (port)	https://zed.dev/oauth/client-metadata.json	200	accepted -
+2026-10-17T13:04:40.279956518Z	ext	amp	https://ampcode.com/oauth/client-metadata.json	200	accepted -
